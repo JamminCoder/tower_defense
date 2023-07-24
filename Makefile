@@ -1,11 +1,11 @@
 # Compiler and flags
 CXX := g++
-CXXFLAGS := -I./headers
+CXXFLAGS := -I./src/headers
 LIBS := -lsfml-window -lsfml-system -lsfml-graphics
 
 # Source and object files
 SRC_DIR := src
-OBJ_DIR := obj
+OBJ_DIR := $(SRC_DIR)/obj
 SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SOURCES))
 
