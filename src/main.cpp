@@ -1,12 +1,13 @@
 #include <SFML/Graphics.hpp>
-#include "Entity.hpp"
+#include "Tower.hpp"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Tower Defense");
     window.setFramerateLimit(30);
 
-    Entity dude(Vec2f(100, 100), Vec2f(50, 50), "resources/Dude.png");
+    Tower tower(100, 100, 64, 128);
+    tower.showHitbox();
 
     /* Main Loop */
     while (window.isOpen())
@@ -24,7 +25,7 @@ int main()
 
 
         /* Display */
-        dude.draw(window);
+        tower.draw(window);
 
 
         window.display();

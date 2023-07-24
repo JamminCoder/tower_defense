@@ -5,15 +5,18 @@
 
 
 class Entity {
-private:
+private:    
+    bool isShowingHitbox = false;
+
+public:
     Vec2f pos;
     Vec2f size;
     sf::Texture texture;
     sf::Sprite sprite;
-    sf::RectangleShape rect;
+    sf::RectangleShape hitbox;
 
-public:
-
-    Entity(Vec2f pos, Vec2f size, const char* texturePath);
+    Entity(int x, int y, int width, int height, const char* texturePath);
     void draw(sf::RenderWindow& window);
+    void showHitbox();
+    void hideHitbox();
 };
