@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Tower.hpp"
+#include "Turret.hpp"
+#include <math.h>
 
 int main()
 {
@@ -8,6 +10,8 @@ int main()
 
     Tower tower(100, 100, 64, 128);
     tower.showHitbox();
+
+    Turret turret(100, 100, 20);
 
     /* Main Loop */
     while (window.isOpen())
@@ -26,7 +30,7 @@ int main()
 
         /* Display */
         tower.draw(window);
-
+        turret.draw(window);
 
         window.display();
         window.clear();
