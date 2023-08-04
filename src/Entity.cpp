@@ -22,6 +22,7 @@ void Entity::draw(sf::RenderWindow& window) {
     window.draw(sprite);
 }
 
+
 void Entity::showHitbox() {
     isShowingHitbox = true;
 }

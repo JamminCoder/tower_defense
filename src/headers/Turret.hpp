@@ -1,21 +1,15 @@
 #pragma once
 #include "shorthand.hpp"
+#include "Entity.hpp"
 #include <SFML/Graphics.hpp>
 
 
-class Turret {
-private:
-    Vec2i mousePos;
-    Vec2f worldMousePos;
-
+class Turret : public Entity {
 public:
-    Vec2f turretStart;
     float angle;
-    sf::VertexArray turret;
-
     int length;
 
     Turret(int x, int y, int length);
+    void update(sf::RenderWindow& window);
     void draw(sf::RenderWindow& window);
-
 };
