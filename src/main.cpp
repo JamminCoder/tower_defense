@@ -27,6 +27,7 @@ int main()
         {
             if (event.type == sf::Event::Closed) {
                 window.close();
+                Bullets::clear();
             }
 
             if (event.type == sf::Event::MouseButtonPressed) {

@@ -9,4 +9,5 @@ public:
     static void update();
     static void draw(sf::RenderWindow& window);
     static void add(Bullet bullet);
+    static void clear();
 };

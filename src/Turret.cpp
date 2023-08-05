@@ -28,11 +28,11 @@ void Turret::update(sf::RenderWindow& window) {
     Vec2f worldMousePos = window.mapPixelToCoords(mousePos);
 
     // Calculate angle in radians between line and mouse position
-    this->angle = std::atan2(worldMousePos.y - pos.y, worldMousePos.x - pos.x);
+    this->angleRads = std::atan2(worldMousePos.y - pos.y, worldMousePos.x - pos.x);
+    this->angle = angleRads * 180.0f / 3.1459265f;
     this->muzzlePos = this->getMuzzlePosition();
-
-    float angleDegrees = angle * 180.0f / 3.1459265f;
-    this->sprite.setRotation(angleDegrees);
+    this->sprite.setRotation(this->angle);
+    this->hitbox.setRotation(this->angle);
 }
 
 void Turret::draw(sf::RenderWindow& window) {
@@ -42,7 +42,7 @@ void Turret::draw(sf::RenderWindow& window) {
 
 void Turret::fire() {
     Vec2f muzzlePos = this->getMuzzlePosition();
-    Bullet bullet(muzzlePos.x, muzzlePos.y, Vec2f(muzzlePos.x / 10, muzzlePos.y / 10));
+    Bullet bullet(muzzlePos.x, muzzlePos.y, Vec2f(length * std::cos(this->angleRads) + 1, length * std::sin(this->angleRads) + 1));
     Bullets::add(bullet);
     canonSound.play();
     rifleSound.play();

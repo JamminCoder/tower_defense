@@ -13,6 +13,11 @@ void Bullets::draw(sf::RenderWindow& window) {
         bullet.draw(window);
     }
 }
+
 void Bullets::add(Bullet bullet) {
     Bullets::bullets.push_back(bullet);
+}
+
+void Bullets::clear() {
+    Bullets::bullets.clear();
 }

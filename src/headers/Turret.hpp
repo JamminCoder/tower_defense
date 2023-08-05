@@ -11,6 +11,7 @@ private:
     
 public:
     float angle;
+    float angleRads;
     int length;
     Vec2f muzzlePos;
 
