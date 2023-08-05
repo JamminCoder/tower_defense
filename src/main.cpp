@@ -7,6 +7,7 @@
 #include "Tower.hpp"
 #include "Turret.hpp"
 #include "SoundManager.hpp"
+#include "Bullet.hpp"
 
 int main()
 {
@@ -15,6 +16,8 @@ int main()
 
     Turret turret(100, 400, 100);
     turret.showHitbox();
+
+    Bullet bullet(100, 200, Vec2f(2.f, 1.f));
 
     /* Main Loop */
     while (window.isOpen())
@@ -33,13 +36,16 @@ int main()
             }
         }
 
-        /* Updates */
-        
 
         /* Display */
+        bullet.draw(window);
         turret.draw(window);
 
         window.display();
+
+        /* Updates */
+        bullet.update();
+
         window.clear();
     }
 }

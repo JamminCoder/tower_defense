@@ -6,14 +6,16 @@ Entity::Entity(int x, int y, int width, int height, const char* texturePath)
     size(Vec2f(width, height))
 {
     sprite.setPosition(pos);
-    texture.loadFromFile(texturePath);
-    sprite.setTexture(texture);
+    if (texturePath != "") {
+        texture.loadFromFile(texturePath);
+        sprite.setTexture(texture);
+    }
 
+    hitbox.setPosition(pos);
     hitbox.setSize(size);
     hitbox.setFillColor(sf::Color::Transparent);
     hitbox.setOutlineColor(sf::Color::Red);
     hitbox.setOutlineThickness(1.0f);
-    hitbox.setPosition(pos);
 }
 
 
