@@ -1,7 +1,7 @@
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -I./src/headers
-LIBS := -lsfml-window -lsfml-system -lsfml-graphics
+LIBS := -lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio
 
 # Source and object files
 SRC_DIR := src

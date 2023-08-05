@@ -6,21 +6,18 @@
 
 #include "Tower.hpp"
 #include "Turret.hpp"
-#include "FullSound.hpp"
+#include "SoundManager.hpp"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Tower Defense");
     window.setFramerateLimit(30);
 
-    Tower tower(100, 150, 64, 128);
-    tower.showHitbox();
-
-    Turret turret(100, 100, 100);
+    Turret turret(100, 400, 100);
     turret.showHitbox();
 
-    FullSound* sounds[8];
-    int index = 0;
+    SoundManager soundManger;
+    const char* shotFile = "/home/tim/Music/sound_effects/gun_shots/garand.wav";
 
     /* Main Loop */
     while (window.isOpen())
@@ -33,14 +30,9 @@ int main()
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-            
 
             if (event.type == sf::Event::MouseButtonPressed) {
-                sounds[index] = new FullSound("/home/tim/Music/sound_effects/gun_shots/garand.wav");
-                std::cout << "Fire\n";
-                sounds[index]->play();
-                index++;
-                if (index > 8) index = 0;
+                soundManger.play(shotFile);
             }
         }
 
@@ -48,7 +40,6 @@ int main()
         
 
         /* Display */
-        tower.draw(window);
         turret.draw(window);
 
         window.display();
