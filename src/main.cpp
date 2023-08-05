@@ -1,7 +1,12 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <math.h>
+#include <iostream>
+#include <stack>
+
 #include "Tower.hpp"
 #include "Turret.hpp"
-#include <math.h>
+#include "FullSound.hpp"
 
 int main()
 {
@@ -14,6 +19,9 @@ int main()
     Turret turret(100, 100, 100);
     turret.showHitbox();
 
+    FullSound* sounds[8];
+    int index = 0;
+
     /* Main Loop */
     while (window.isOpen())
     {
@@ -22,12 +30,22 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) {
                 window.close();
+            }
+            
+
+            if (event.type == sf::Event::MouseButtonPressed) {
+                sounds[index] = new FullSound("/home/tim/Music/sound_effects/gun_shots/garand.wav");
+                std::cout << "Fire\n";
+                sounds[index]->play();
+                index++;
+                if (index > 8) index = 0;
+            }
         }
 
         /* Updates */
-
+        
 
         /* Display */
         tower.draw(window);
