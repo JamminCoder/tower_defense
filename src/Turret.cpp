@@ -33,6 +33,13 @@ void Turret::update(sf::RenderWindow& window) {
     this->muzzlePos = this->getMuzzlePosition();
     this->sprite.setRotation(this->angle);
     this->hitbox.setRotation(this->angle);
+
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        if (this->cooldown <= 0) this->fire();
+    }
+
+    if (this->cooldown > 0) this->cooldown -= 1;
 }
 
 void Turret::draw(sf::RenderWindow& window) {
@@ -46,4 +53,5 @@ void Turret::fire() {
     Bullets::add(bullet);
     canonSound.play();
     rifleSound.play();
+    this->cooldown = 5;
 }

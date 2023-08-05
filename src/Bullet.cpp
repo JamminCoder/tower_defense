@@ -10,7 +10,8 @@ Bullet::Bullet(int x, int y, Vec2f velocity) :
 
 
 void Bullet::update() {
-    pos += vel;
+    pos.x += vel.x;
+    pos.y += vel.y;
     this->sprite.move(vel);
     this->hitbox.move(vel);
 }

@@ -1,10 +1,23 @@
 #include "Bullets.hpp"
+#include <iostream>
 
 std::vector<Bullet> Bullets::bullets; 
 
 void Bullets::update() {
+    int i = 0;
     for (Bullet& bullet : Bullets::bullets) {
-        bullet.update();
+        Vec2f pos = bullet.sprite.getPosition();
+
+        if (
+            (pos.x <= 1000 && pos.x > 0) &&
+            (pos.y <= 1000 && pos.y > 0)
+        ) {
+            bullet.update();
+        } else {
+            Bullets::bullets.erase(Bullets::bullets.begin() + i);
+        }
+
+        i++;
     }
 }
 
