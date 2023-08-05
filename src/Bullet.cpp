@@ -10,10 +10,9 @@ Bullet::Bullet(int x, int y, Vec2f velocity) :
 
 
 void Bullet::update() {
-    pos.x += vel.x;
-    pos.y += vel.y;
-    this->sprite.setPosition(pos);
-    this->hitbox.setPosition(pos);
+    pos += vel;
+    this->sprite.move(vel);
+    this->hitbox.move(vel);
 }
 
 void Bullet::draw(sf::RenderWindow& window) {

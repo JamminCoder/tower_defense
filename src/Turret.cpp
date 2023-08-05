@@ -1,7 +1,9 @@
-#include "Turret.hpp"
-#include "Entity.hpp"
 #include <math.h>
 #include <iostream>
+#include "Turret.hpp"
+#include "Entity.hpp"
+#include "Bullet.hpp"
+#include "Bullets.hpp"
 
 Turret::Turret(int x, int y, int length) :
     Entity(x, y, 2, length, "resources/turret.png"),
@@ -39,6 +41,9 @@ void Turret::draw(sf::RenderWindow& window) {
 }
 
 void Turret::fire() {
+    Vec2f muzzlePos = this->getMuzzlePosition();
+    Bullet bullet(muzzlePos.x, muzzlePos.y, Vec2f(muzzlePos.x / 10, muzzlePos.y / 10));
+    Bullets::add(bullet);
     canonSound.play();
     rifleSound.play();
 }
