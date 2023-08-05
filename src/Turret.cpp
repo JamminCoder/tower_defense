@@ -16,8 +16,8 @@ Turret::Turret(int x, int y, int length) :
 
 Vec2f Turret::getMuzzlePosition() {
     return Vec2f(
-        this->pos.x + this->length * std::cos(this->angle), 
-        this->pos.y + this->length * std::sin(this->angle)
+        this->pos.x + this->length * std::cos(this->angleRads), 
+        this->pos.y + this->length * std::sin(this->angleRads)
     );
 }
 
