@@ -4,7 +4,9 @@
 #include <iostream>
 
 Turret::Turret(int x, int y, int length) :
-    Entity(x, y, 2, length, "resources/turret.png")
+    Entity(x, y, 2, length, "resources/turret.png"),
+    canonSound("resources/audio/canon.wav"),
+    rifleSound("resources/audio/garand.wav")
 {
     this->length = length;
     this->sprite.setOrigin(Vec2f(0, 0));
@@ -34,4 +36,9 @@ void Turret::update(sf::RenderWindow& window) {
 void Turret::draw(sf::RenderWindow& window) {
     this->update(window);
     window.draw(this->sprite);
+}
+
+void Turret::fire() {
+    canonSound.play();
+    rifleSound.play();
 }

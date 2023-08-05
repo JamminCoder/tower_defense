@@ -1,6 +1,10 @@
 #include <SFML/Audio.hpp>
 #include "SoundManager.hpp"
 
+SoundManager::SoundManager(){}
+SoundManager::SoundManager(const char* audioFilePath) {
+    this->load(audioFilePath);
+}
 
 void SoundManager::load(const char* audioFilePath) {
     for (int i = 0; i < SOUND_LIMIT; i++) {

@@ -1,3 +1,4 @@
+#pragma once
 #include <SFML/Audio.hpp>
 #include "FullSound.hpp"
 
@@ -11,6 +12,8 @@ private:
     void updateSoundIndex();
 
 public:
+    SoundManager(const char* audioFilePath);
+    SoundManager();
     void play();
     void load(const char* audioFilePath);
 };

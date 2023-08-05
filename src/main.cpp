@@ -16,14 +16,6 @@ int main()
     Turret turret(100, 400, 100);
     turret.showHitbox();
 
-    SoundManager rifle;
-    const char* rifleFile = "resources/audio/garand.wav";
-    rifle.load(rifleFile);
-
-    SoundManager canon;
-    const char* canonFile = "resources/audio/canon.wav";
-    canon.load(canonFile);
-    
     /* Main Loop */
     while (window.isOpen())
     {
@@ -37,8 +29,7 @@ int main()
             }
 
             if (event.type == sf::Event::MouseButtonPressed) {
-                rifle.play();
-                canon.play();
+                turret.fire();
             }
         }
 
