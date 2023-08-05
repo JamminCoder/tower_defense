@@ -16,9 +16,13 @@ int main()
     Turret turret(100, 400, 100);
     turret.showHitbox();
 
-    SoundManager soundManger;
-    const char* shotFile = "/home/tim/Music/sound_effects/gun_shots/garand.wav";
-    soundManger.load(shotFile);
+    SoundManager rifle;
+    const char* rifleFile = "resources/audio/garand.wav";
+    rifle.load(rifleFile);
+
+    SoundManager canon;
+    const char* canonFile = "resources/audio/canon.wav";
+    canon.load(canonFile);
     
     /* Main Loop */
     while (window.isOpen())
@@ -33,7 +37,8 @@ int main()
             }
 
             if (event.type == sf::Event::MouseButtonPressed) {
-                soundManger.play();
+                rifle.play();
+                canon.play();
             }
         }
 
