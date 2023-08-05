@@ -18,7 +18,8 @@ int main()
 
     SoundManager soundManger;
     const char* shotFile = "/home/tim/Music/sound_effects/gun_shots/garand.wav";
-
+    soundManger.load(shotFile);
+    
     /* Main Loop */
     while (window.isOpen())
     {
@@ -32,7 +33,7 @@ int main()
             }
 
             if (event.type == sf::Event::MouseButtonPressed) {
-                soundManger.play(shotFile);
+                soundManger.play();
             }
         }
 

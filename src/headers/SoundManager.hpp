@@ -11,5 +11,6 @@ private:
     void updateSoundIndex();
 
 public:
-    void play(const char* audioFilePath);
+    void play();
+    void load(const char* audioFilePath);
 };

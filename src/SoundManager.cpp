@@ -2,13 +2,18 @@
 #include "SoundManager.hpp"
 
 
-void SoundManager::play(const char* audioFilePath) {
-    sounds[soundIndex] = new FullSound("/home/tim/Music/sound_effects/gun_shots/garand.wav");
+void SoundManager::load(const char* audioFilePath) {
+    for (int i = 0; i < SOUND_LIMIT; i++) {
+        sounds[i] = new FullSound(audioFilePath);
+    }
+}
+
+void SoundManager::play() {
     sounds[soundIndex]->play();
     this->updateSoundIndex();
 }
 
 void SoundManager::updateSoundIndex() {
     soundIndex++;
-    if (soundIndex > SOUND_LIMIT) soundIndex = 0;
+    if (soundIndex >= SOUND_LIMIT) soundIndex = 0;
 }
