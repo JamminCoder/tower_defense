@@ -9,12 +9,15 @@
 #include "SoundManager.hpp"
 #include "Bullets.hpp"
 
+#define WIDTH 1200
+#define HEIGHT 800
+
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1200, 800), "Tower Defense");
+    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Tower Defense");
     window.setFramerateLimit(30);
 
-    Turret turret(100, 400, 64);
+    Turret turret(WIDTH / 2, HEIGHT / 2 + HEIGHT / 4, 64);
     turret.showHitbox();
 
     /* Main Loop */

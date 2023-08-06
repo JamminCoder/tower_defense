@@ -49,7 +49,7 @@ void Turret::draw(sf::RenderWindow& window) {
 
 void Turret::fire() {
     Vec2f muzzlePos = this->getMuzzlePosition();
-    Bullet bullet(muzzlePos.x, muzzlePos.y, Vec2f(length * std::cos(this->angleRads) / 2, length * std::sin(this->angleRads) / 2));
+    Bullet bullet(muzzlePos.x, muzzlePos.y, Vec2f(std::cos(this->angleRads), std::sin(this->angleRads)));
     Bullets::add(bullet);
     canonSound.play();
     rifleSound.play();

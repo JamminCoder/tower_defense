@@ -1,19 +1,19 @@
 #include "Bullet.hpp"
+#include <iostream>
 
 Bullet::Bullet(int x, int y, Vec2f velocity) :
     Entity(x, y, 5, 5, ""),
-    vel(velocity)
+    vel(Vec2f(velocity.x * 20, velocity.y * 20))
 {
     this->showHitbox();
-    this->hitbox.setFillColor(sf::Color::Red);
+    this->hitbox.setOutlineColor(sf::Color::Red);
 }
 
 
 void Bullet::update() {
-    pos.x += vel.x;
-    pos.y += vel.y;
     this->sprite.move(vel);
     this->hitbox.move(vel);
+    this->pos = this->hitbox.getPosition();
 }
 
 void Bullet::draw(sf::RenderWindow& window) {
