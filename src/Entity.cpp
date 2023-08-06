@@ -1,19 +1,20 @@
 #include "Entity.hpp"
-
+#include <iostream>
 
 Entity::Entity(int x, int y, int width, int height, const char* texturePath)
     : pos(Vec2f(x, y)), 
     size(Vec2f(width, height))
 {
     sprite.setPosition(pos);
-    texture.loadFromFile(texturePath);
-    sprite.setTexture(texture);
-
+    hitbox.setPosition(pos);
     hitbox.setSize(size);
     hitbox.setFillColor(sf::Color::Transparent);
     hitbox.setOutlineColor(sf::Color::Red);
     hitbox.setOutlineThickness(1.0f);
-    hitbox.setPosition(pos);
+
+    if (texturePath[0] == '\0') return;
+    texture.loadFromFile(texturePath);
+    sprite.setTexture(texture);
 }
 
 

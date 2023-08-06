@@ -7,6 +7,7 @@
 #include "Tower.hpp"
 #include "Turret.hpp"
 #include "SoundManager.hpp"
+#include "Bullets.hpp"
 
 int main()
 {
@@ -19,27 +20,26 @@ int main()
     /* Main Loop */
     while (window.isOpen())
     {
-
         /* Events */
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed) {
                 window.close();
-            }
-
-            if (event.type == sf::Event::MouseButtonPressed) {
-                turret.fire();
+                Bullets::clear();
             }
         }
 
-        /* Updates */
-        
 
         /* Display */
         turret.draw(window);
+        Bullets::draw(window);
 
         window.display();
+
+        /* Updates */
+        Bullets::update();
+
         window.clear();
     }
 }

@@ -5,12 +5,10 @@
 
 
 class Entity {
-private:    
-    bool isShowingHitbox = false;
-
 public:
     Vec2f pos;
     Vec2f size;
+    bool isShowingHitbox = false;
     sf::Texture texture;
     sf::Sprite sprite;
     sf::RectangleShape hitbox;

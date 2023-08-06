@@ -8,9 +8,11 @@ class Turret : public Entity {
 private:
     SoundManager rifleSound;
     SoundManager canonSound;
+    unsigned long cooldown;
     
 public:
     float angle;
+    float angleRads;
     int length;
     Vec2f muzzlePos;
 
