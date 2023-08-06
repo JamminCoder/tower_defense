@@ -14,7 +14,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Tower Defense");
     window.setFramerateLimit(30);
 
-    Turret turret(100, 400, 100);
+    Turret turret(100, 400, 64);
     turret.showHitbox();
 
     /* Main Loop */
