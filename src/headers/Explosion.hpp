@@ -14,7 +14,7 @@ const int NUM_PARTICLES = 200;
 const int PARTICLE_LIFETIME_MS = 500;
 const float PARTICLE_SPEED = 500.0f;
 
-class ParticleExplosion {
+class Explosion {
 private:
     // Create the particles vector
     std::vector<Particle> particles;
@@ -26,7 +26,7 @@ private:
 
 public:
     bool isDone = false;
-    ParticleExplosion(Vec2f pos);
+    Explosion(Vec2f pos, int lifetime_ms);
     void draw(sf::RenderWindow& window);
     void update(sf::RenderWindow& window);
 };

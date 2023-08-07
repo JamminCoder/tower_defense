@@ -2,8 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Bullet.hpp"
-#include "ExplosionManager.hpp"
-#include "ParticleExplosion.hpp"
 
 class Bullets {
 public:

@@ -1,7 +1,6 @@
 #include "Bullets.hpp"
 #include "globals.hpp"
-#include "ParticleExplosion.hpp"
-#include "ExplosionManager.hpp"
+#include "Explosion.hpp"
 #include "SoundManager.hpp"
 #include <iostream>
 

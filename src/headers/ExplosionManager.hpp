@@ -1,10 +1,10 @@
 #pragma once
-#include "ParticleExplosion.hpp"
+#include "Explosion.hpp"
 
 class ExplosionManager {
 public:
-    static std::vector<ParticleExplosion> explosions;
+    static std::vector<Explosion> explosions;
 
     static void draw(sf::RenderWindow& window);
-    static void add(ParticleExplosion explosion);
+    static void add(Explosion explosion);
 };

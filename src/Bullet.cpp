@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Bullet.hpp"
-#include "ParticleExplosion.hpp"
+#include "Explosion.hpp"
 #include "ExplosionManager.hpp"
 #include "SoundManager.hpp"
 
@@ -21,10 +21,9 @@ void Bullet::update() {
 }
 
 void Bullet::explode(SoundManager explosionSound) {
-    ParticleExplosion explosion(this->hitbox.getPosition());
+    Explosion explosion(this->hitbox.getPosition(), 500);
     ExplosionManager::add(explosion);
     explosionSound.play();
-    
 }
 
 void Bullet::draw(sf::RenderWindow& window) {

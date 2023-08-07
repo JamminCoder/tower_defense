@@ -1,13 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
 #include <iostream>
-#include "ParticleExplosion.hpp"
+#include "Explosion.hpp"
 #include "shorthand.hpp"
 
 
-ParticleExplosion::ParticleExplosion(Vec2f pos) {
+Explosion::Explosion(Vec2f pos, int lifetime_ms) {
     this->pos = pos;
-    lifetime = sf::milliseconds(500);
+    lifetime = sf::milliseconds(lifetime_ms);
     lifeDecrease = sf::milliseconds(1000 / 30); // Assuming 30 FPS
     particleTexture.loadFromFile("resources/particle.png");
     particleSprite.setTexture(particleTexture);
@@ -15,7 +15,7 @@ ParticleExplosion::ParticleExplosion(Vec2f pos) {
 }
 
 
-void ParticleExplosion::draw(sf::RenderWindow& window) {
+void Explosion::draw(sf::RenderWindow& window) {
     if (this->isDone) return;
     
     // Generate new particles on mouse click (left mouse button)
@@ -30,7 +30,7 @@ void ParticleExplosion::draw(sf::RenderWindow& window) {
     }
 }
 
-void ParticleExplosion::update(sf::RenderWindow& window) {
+void Explosion::update(sf::RenderWindow& window) {
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
         particle.position.x += particle.velocity.x * sf::seconds(1.0f / 60.0f).asSeconds();
