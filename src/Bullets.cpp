@@ -1,12 +1,15 @@
 #include "Bullets.hpp"
 #include "globals.hpp"
+#include "ParticleExplosion.hpp"
+#include "ExplosionManager.hpp"
+#include "SoundManager.hpp"
 #include <iostream>
 
 std::vector<Bullet> Bullets::bullets; 
 
-void Bullets::update() {
-    int i = 0;
-    for (Bullet& bullet : Bullets::bullets) {
+void Bullets::update(sf::RenderWindow& window, SoundManager explosionSound) {
+    for (int i = 0; i < Bullets::bullets.size(); i++) {
+        Bullet& bullet = Bullets::bullets.at(i);
         Vec2f pos = bullet.sprite.getPosition();
 
         if (
@@ -15,10 +18,9 @@ void Bullets::update() {
         ) {
             bullet.update();
         } else {
+            bullet.explode(explosionSound);
             Bullets::bullets.erase(Bullets::bullets.begin() + i);
         }
-
-        i++;
     }
 }
 

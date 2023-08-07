@@ -1,7 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Entity.hpp"
-
+#include "ExplosionManager.hpp"
+#include "SoundManager.hpp"
 
 class Bullet : public Entity {
 private:
@@ -12,4 +13,5 @@ public:
     Bullet(int x, int y, Vec2f velocity);
     void update();
     void draw(sf::RenderWindow& window);
+    void explode(SoundManager explosionSound);
 };

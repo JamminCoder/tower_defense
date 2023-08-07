@@ -9,6 +9,8 @@
 #include "SoundManager.hpp"
 #include "Bullets.hpp"
 #include "globals.hpp"
+#include "ExplosionManager.hpp"
+#include "SoundManager.hpp"
 
 int main()
 {
@@ -17,7 +19,8 @@ int main()
 
     Turret turret(WINDOW_W / 2, WINDOW_H / 2 + WINDOW_H / 4, 64);
     turret.showHitbox();
-
+    SoundManager explosionSound("resources/audio/shotgun.wav");
+    
     /* Main Loop */
     while (window.isOpen())
     {
@@ -36,11 +39,10 @@ int main()
         turret.draw(window);
         Bullets::draw(window);
 
-        window.display();
-
         /* Updates */
-        Bullets::update();
-
+        Bullets::update(window, explosionSound);
+        ExplosionManager::draw(window);
+        window.display();
         window.clear();
     }
 }

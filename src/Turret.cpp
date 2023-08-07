@@ -53,5 +53,5 @@ void Turret::fire() {
     Bullets::add(bullet);
     canonSound.play();
     rifleSound.play();
-    this->cooldown = 10;
+    this->cooldown = 5;
 }
