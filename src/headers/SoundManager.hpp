@@ -1,9 +1,20 @@
 #pragma once
 #include <SFML/Audio.hpp>
-#include "FullSound.hpp"
 
 #define SOUND_LIMIT 8
 
+class FullSound {
+private:
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
+
+public:
+    FullSound(const char* audioFilePath);
+    FullSound();
+
+    bool isDone();
+    void play();
+};
 
 class SoundManager {
 private:
