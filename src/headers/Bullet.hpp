@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Entity.hpp"
 #include "ExplosionManager.hpp"
-#include "SoundManager.hpp"
+#include "Audio.hpp"
 
 class Bullet : public Entity {
 private:
@@ -13,5 +13,5 @@ public:
     Bullet(int x, int y, Vec2f velocity);
     void update();
     void draw(sf::RenderWindow& window);
-    void explode(SoundManager explosionSound);
+    void explode(ConcurrentAudio explosionSound);
 };

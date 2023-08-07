@@ -1,12 +1,12 @@
 #include "Bullets.hpp"
 #include "globals.hpp"
 #include "Explosion.hpp"
-#include "SoundManager.hpp"
+#include "Audio.hpp"
 #include <iostream>
 
 std::vector<Bullet> Bullets::bullets; 
 
-void Bullets::update(sf::RenderWindow& window, SoundManager explosionSound) {
+void Bullets::update(sf::RenderWindow& window, ConcurrentAudio explosionSound) {
     for (int i = 0; i < Bullets::bullets.size(); i++) {
         Bullet& bullet = Bullets::bullets.at(i);
         Vec2f pos = bullet.sprite.getPosition();

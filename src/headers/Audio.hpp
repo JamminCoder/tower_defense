@@ -1,30 +1,30 @@
 #pragma once
 #include <SFML/Audio.hpp>
 
-#define SOUND_LIMIT 8
+#define SOUND_LIMIT 16
 
-class FullSound {
+class Audio {
 private:
     sf::SoundBuffer buffer;
     sf::Sound sound;
 
 public:
-    FullSound(const char* audioFilePath);
-    FullSound();
+    Audio(const char* audioFilePath);
+    Audio();
 
     bool isDone();
     void play();
 };
 
-class SoundManager {
+class ConcurrentAudio {
 private:
     int soundIndex = 0;
-    FullSound* sounds[SOUND_LIMIT];
+    Audio* sounds[SOUND_LIMIT];
     void updateSoundIndex();
 
 public:
-    SoundManager(const char* audioFilePath);
-    SoundManager();
+    ConcurrentAudio(const char* audioFilePath);
+    ConcurrentAudio();
     void play();
     void load(const char* audioFilePath);
 };

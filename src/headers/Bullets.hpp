@@ -2,11 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Bullet.hpp"
+#include "Audio.hpp"
 
 class Bullets {
 public:
     static std::vector<Bullet> bullets;
-    static void update(sf::RenderWindow& window, SoundManager explosionSound);
+    static void update(sf::RenderWindow& window, ConcurrentAudio explosionSound);
     static void draw(sf::RenderWindow& window);
     static void add(Bullet bullet);
     static void clear();

@@ -2,12 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include "shorthand.hpp"
 #include "Entity.hpp"
-#include "SoundManager.hpp"
+#include "Audio.hpp"
 
 class Turret : public Entity {
 private:
-    SoundManager rifleSound;
-    SoundManager canonSound;
+    ConcurrentAudio rifleSound;
+    ConcurrentAudio canonSound;
     unsigned long cooldown;
     
 public:

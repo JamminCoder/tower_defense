@@ -2,7 +2,7 @@
 #include "Bullet.hpp"
 #include "Explosion.hpp"
 #include "ExplosionManager.hpp"
-#include "SoundManager.hpp"
+#include "Audio.hpp"
 
 
 Bullet::Bullet(int x, int y, Vec2f velocity) :
@@ -20,7 +20,7 @@ void Bullet::update() {
     this->pos = this->hitbox.getPosition();
 }
 
-void Bullet::explode(SoundManager explosionSound) {
+void Bullet::explode(ConcurrentAudio explosionSound) {
     Explosion explosion(this->hitbox.getPosition(), 500);
     ExplosionManager::add(explosion);
     explosionSound.play();

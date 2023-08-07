@@ -6,11 +6,10 @@
 
 #include "Tower.hpp"
 #include "Turret.hpp"
-#include "SoundManager.hpp"
 #include "Bullets.hpp"
 #include "globals.hpp"
 #include "ExplosionManager.hpp"
-#include "SoundManager.hpp"
+#include "Audio.hpp"
 
 int main()
 {
@@ -19,7 +18,7 @@ int main()
 
     Turret turret(WINDOW_W / 2, WINDOW_H / 2 + WINDOW_H / 4, 64);
     turret.showHitbox();
-    SoundManager explosionSound("resources/audio/shotgun.wav");
+    ConcurrentAudio explosionSound("resources/audio/shotgun.wav");
     
     /* Main Loop */
     while (window.isOpen())
