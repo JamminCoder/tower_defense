@@ -1,4 +1,5 @@
 #include "Bullets.hpp"
+#include "globals.hpp"
 #include <iostream>
 
 std::vector<Bullet> Bullets::bullets; 
@@ -9,8 +10,8 @@ void Bullets::update() {
         Vec2f pos = bullet.sprite.getPosition();
 
         if (
-            (pos.x <= 1000 && pos.x > 0) &&
-            (pos.y <= 1000 && pos.y > 0)
+            (pos.x <= WINDOW_W && pos.x > 0) &&
+            (pos.y <= WINDOW_H && pos.y > 0)
         ) {
             bullet.update();
         } else {
