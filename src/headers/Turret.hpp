@@ -8,7 +8,7 @@ class Turret : public Entity {
 private:
     ConcurrentAudio rifleSound;
     ConcurrentAudio canonSound;
-    unsigned long cooldown;
+    sf::Time cooldown = sf::milliseconds(0);
     
 public:
     float angle;

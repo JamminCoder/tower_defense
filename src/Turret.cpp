@@ -12,7 +12,7 @@ Turret::Turret(int x, int y, int length) :
 {
     this->length = length;
     this->sprite.setOrigin(Vec2f(0, 0));
-    this->cooldown = 0;
+    // this->cooldown = 0;
 };
 
 Vec2f Turret::getMuzzlePosition() {
@@ -37,10 +37,10 @@ void Turret::update(sf::RenderWindow& window) {
 
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        if (this->cooldown <= 0) this->fire();
+        if (this->cooldown <= sf::Time::Zero) this->fire();
     }
 
-    if (this->cooldown > 0) this->cooldown -= 1;
+    if (this->cooldown > sf::Time::Zero) this->cooldown -= sf::milliseconds(1000 / 30);
 }
 
 void Turret::draw(sf::RenderWindow& window) {
@@ -54,5 +54,5 @@ void Turret::fire() {
     Bullets::add(bullet);
     canonSound.play();
     rifleSound.play();
-    this->cooldown = 5;
+    this->cooldown = sf::milliseconds(100);
 }
