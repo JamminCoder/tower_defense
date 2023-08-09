@@ -15,7 +15,7 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_W, WINDOW_H), "Tower Defense");
-    window.setFramerateLimit(30);
+    window.setFramerateLimit(FRAME_RATE);
 
     AudioLoader::load();
     TextureLoader::loadTextures();

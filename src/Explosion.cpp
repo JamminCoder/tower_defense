@@ -3,13 +3,14 @@
 #include <iostream>
 #include "Explosion.hpp"
 #include "shorthand.hpp"
+#include "globals.hpp"
 #include "TextureLoader.hpp"
 
 
 Explosion::Explosion(Vec2f pos, int lifetime_ms) {
     this->pos = pos;
     lifetime = sf::milliseconds(lifetime_ms);
-    lifeDecrease = sf::milliseconds(1000 / 30); // Assuming 30 FPS
+    lifeDecrease = sf::milliseconds(1000 / FRAME_RATE); // Assuming 30 FPS
     particleSprite.setOrigin(particleTexture.getSize().x / 2.0f, particleTexture.getSize().y / 2.0f);
     particleSprite.setTexture(TextureLoader::particleTexture);
 }
