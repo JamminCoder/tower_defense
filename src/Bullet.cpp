@@ -3,6 +3,7 @@
 #include "Explosion.hpp"
 #include "ExplosionManager.hpp"
 #include "Audio.hpp"
+#include "TextureLoader.hpp"
 
 
 Bullet::Bullet(int x, int y, Vec2f velocity) :
@@ -10,7 +11,7 @@ Bullet::Bullet(int x, int y, Vec2f velocity) :
     vel(Vec2f(velocity.x * 20, velocity.y * 20))
 {
     this->showHitbox();
-    this->hitbox.setOutlineColor(sf::Color::Red);
+    this->sprite.setTexture(TextureLoader::particleTexture);
 }
 
 
@@ -28,5 +29,5 @@ void Bullet::explode(ConcurrentAudio explosionSound) {
 
 void Bullet::draw(sf::RenderWindow& window) {
     if (this->isShowingHitbox) window.draw(this->hitbox);
-    window.draw(this->hitbox);
+    window.draw(this->sprite);
 }

@@ -11,12 +11,12 @@ Explosion::Explosion(Vec2f pos, int lifetime_ms) {
     lifetime = sf::milliseconds(lifetime_ms);
     lifeDecrease = sf::milliseconds(1000 / 30); // Assuming 30 FPS
     particleSprite.setOrigin(particleTexture.getSize().x / 2.0f, particleTexture.getSize().y / 2.0f);
+    particleSprite.setTexture(TextureLoader::particleTexture);
 }
 
 
 void Explosion::draw(sf::RenderWindow& window) {
     if (this->isDone) return;
-    particleSprite.setTexture(TextureLoader::particleTexture);
     
     // Generate new particles on mouse click (left mouse button)
     for (int i = 0; i < NUM_PARTICLES; ++i) {

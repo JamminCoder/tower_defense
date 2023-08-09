@@ -8,7 +8,6 @@ Entity::Entity(int x, int y, int width, int height, const char* texturePath)
     sprite.setPosition(pos);
     hitbox.setPosition(pos);
     hitbox.setSize(size);
-    hitbox.setFillColor(sf::Color::Transparent);
     hitbox.setOutlineColor(sf::Color::Red);
     hitbox.setOutlineThickness(1.0f);
 
@@ -20,6 +19,7 @@ Entity::Entity(int x, int y, int width, int height, const char* texturePath)
 
 void Entity::draw(sf::RenderWindow& window) {
     if (isShowingHitbox) window.draw(hitbox);
+    this->sprite.setTexture(texture);
     window.draw(sprite);
 }
 
