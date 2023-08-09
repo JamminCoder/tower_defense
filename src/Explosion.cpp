@@ -3,20 +3,20 @@
 #include <iostream>
 #include "Explosion.hpp"
 #include "shorthand.hpp"
+#include "TextureLoader.hpp"
 
 
 Explosion::Explosion(Vec2f pos, int lifetime_ms) {
     this->pos = pos;
     lifetime = sf::milliseconds(lifetime_ms);
     lifeDecrease = sf::milliseconds(1000 / 30); // Assuming 30 FPS
-    particleTexture.loadFromFile("resources/particle.png");
     particleSprite.setOrigin(particleTexture.getSize().x / 2.0f, particleTexture.getSize().y / 2.0f);
 }
 
 
 void Explosion::draw(sf::RenderWindow& window) {
     if (this->isDone) return;
-    particleSprite.setTexture(particleTexture);
+    particleSprite.setTexture(TextureLoader::particleTexture);
     
     // Generate new particles on mouse click (left mouse button)
     for (int i = 0; i < NUM_PARTICLES; ++i) {

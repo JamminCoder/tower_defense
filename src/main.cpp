@@ -10,11 +10,14 @@
 #include "globals.hpp"
 #include "ExplosionManager.hpp"
 #include "Audio.hpp"
+#include "TextureLoader.hpp"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_W, WINDOW_H), "Tower Defense");
     window.setFramerateLimit(30);
+
+    TextureLoader::loadTextures();
 
     Turret turret(WINDOW_W / 2, WINDOW_H / 2 + WINDOW_H / 4, 64);
     turret.showHitbox();

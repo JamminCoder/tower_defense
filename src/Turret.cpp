@@ -12,6 +12,7 @@ Turret::Turret(int x, int y, int length) :
 {
     this->length = length;
     this->sprite.setOrigin(Vec2f(0, 0));
+    this->cooldown = 0;
 };
 
 Vec2f Turret::getMuzzlePosition() {
