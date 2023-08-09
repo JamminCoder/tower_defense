@@ -6,8 +6,6 @@
 
 class Turret : public Entity {
 private:
-    ConcurrentAudio rifleSound;
-    ConcurrentAudio canonSound;
     sf::Time cooldown = sf::milliseconds(0);
     
 public:
@@ -23,4 +21,5 @@ public:
 
     Vec2f getMuzzlePosition();
     void fire();
+    void resetCooldown();
 };

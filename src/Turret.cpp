@@ -4,15 +4,13 @@
 #include "Entity.hpp"
 #include "Bullet.hpp"
 #include "Bullets.hpp"
+#include "AudioLoader.hpp"
 
 Turret::Turret(int x, int y, int length) :
-    Entity(x, y, 2, length, "resources/turret.png"),
-    canonSound("resources/audio/canon.wav"),
-    rifleSound("resources/audio/garand.wav")
+    Entity(x, y, 2, length, "resources/turret.png")
 {
     this->length = length;
     this->sprite.setOrigin(Vec2f(0, 0));
-    // this->cooldown = 0;
 };
 
 Vec2f Turret::getMuzzlePosition() {
@@ -48,11 +46,14 @@ void Turret::draw(sf::RenderWindow& window) {
     window.draw(this->sprite);
 }
 
+void Turret::resetCooldown() {
+    this->cooldown = sf::milliseconds(200);
+}
+
 void Turret::fire() {
     Vec2f muzzlePos = this->getMuzzlePosition();
     Bullet bullet(muzzlePos.x, muzzlePos.y, Vec2f(std::cos(this->angleRads), std::sin(this->angleRads)));
     Bullets::add(bullet);
-    canonSound.play();
-    rifleSound.play();
-    this->cooldown = sf::milliseconds(100);
+    AudioLoader::turretFire.play();
+    this->resetCooldown();
 }
