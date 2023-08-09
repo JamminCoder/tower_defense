@@ -13,5 +13,5 @@ public:
     Bullet(int x, int y, Vec2f velocity);
     void update();
     void draw(sf::RenderWindow& window);
-    void explode(ConcurrentAudio explosionSound);
+    void explode();
 };

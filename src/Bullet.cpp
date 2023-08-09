@@ -2,9 +2,8 @@
 #include "Bullet.hpp"
 #include "Explosion.hpp"
 #include "ExplosionManager.hpp"
-#include "Audio.hpp"
 #include "TextureLoader.hpp"
-
+#include "AudioLoader.hpp"
 
 Bullet::Bullet(int x, int y, Vec2f velocity) :
     Entity(x, y, 5, 5, ""),
@@ -21,10 +20,10 @@ void Bullet::update() {
     this->pos = this->hitbox.getPosition();
 }
 
-void Bullet::explode(ConcurrentAudio explosionSound) {
+void Bullet::explode() {
     Explosion explosion(this->hitbox.getPosition(), 500);
     ExplosionManager::add(explosion);
-    explosionSound.play();
+    AudioLoader::explosion.play();
 }
 
 void Bullet::draw(sf::RenderWindow& window) {

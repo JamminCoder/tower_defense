@@ -9,19 +9,19 @@
 #include "Bullets.hpp"
 #include "globals.hpp"
 #include "ExplosionManager.hpp"
-#include "Audio.hpp"
 #include "TextureLoader.hpp"
+#include "AudioLoader.hpp"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_W, WINDOW_H), "Tower Defense");
     window.setFramerateLimit(30);
 
+    AudioLoader::load();
     TextureLoader::loadTextures();
 
     Turret turret(WINDOW_W / 2, WINDOW_H / 2 + WINDOW_H / 4, 64);
     turret.showHitbox();
-    ConcurrentAudio explosionSound("resources/audio/shotgun.wav");
     
     /* Main Loop */
     while (window.isOpen())
@@ -42,7 +42,7 @@ int main()
         Bullets::draw(window);
 
         /* Updates */
-        Bullets::update(window, explosionSound);
+        Bullets::update(window);
         ExplosionManager::draw(window);
         window.display();
         window.clear();
