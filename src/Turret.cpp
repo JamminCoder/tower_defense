@@ -47,7 +47,7 @@ void Turret::draw(sf::RenderWindow& window) {
 }
 
 void Turret::resetCooldown() {
-    this->cooldown = sf::milliseconds(200);
+    this->cooldown = sf::milliseconds(500);
 }
 
 void Turret::fire() {

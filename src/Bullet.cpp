@@ -21,7 +21,7 @@ void Bullet::update() {
 }
 
 void Bullet::explode() {
-    Explosion explosion(this->hitbox.getPosition(), 500);
+    Explosion explosion(this->pos, 100, 500.f, sf::milliseconds(500));
     ExplosionManager::add(explosion);
     AudioLoader::explosion.play();
 }

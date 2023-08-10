@@ -7,12 +7,12 @@
 #include "TextureLoader.hpp"
 
 
-Explosion::Explosion(Vec2f pos, int lifetime_ms) {
+Explosion::Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime) {
     this->pos = pos;
-    lifetime = sf::milliseconds(lifetime_ms);
-    lifeDecrease = sf::milliseconds(1000 / FRAME_RATE); // Assuming 30 FPS
-    particleSprite.setOrigin(particleTexture.getSize().x / 2.0f, particleTexture.getSize().y / 2.0f);
-    particleSprite.setTexture(TextureLoader::particleTexture);
+    this->lifetime = lifetime;
+    this->lifeDecrease = sf::milliseconds(1000 / FRAME_RATE); // Assuming 30 FPS
+    this->particleSprite.setOrigin(particleTexture.getSize().x / 2.0f, particleTexture.getSize().y / 2.0f);
+    this->particleSprite.setTexture(TextureLoader::particleTexture);
 }
 
 
@@ -20,11 +20,11 @@ void Explosion::draw(sf::RenderWindow& window) {
     if (this->isDone) return;
     
     // Generate new particles on mouse click (left mouse button)
-    for (int i = 0; i < NUM_PARTICLES; ++i) {
+    for (int i = 0; i < this->particleNum; ++i) {
         Particle particle;
         particle.position = this->pos;
         float angle = static_cast<float>(rand() % 360) * 3.14f / 180.0f;
-        float speed = static_cast<float>(rand() % 360) + PARTICLE_SPEED;
+        float speed = static_cast<float>(rand() % 360) + this->particleSpeed;
         particle.velocity = Vec2f(std::cos(angle) * speed, std::sin(angle) * speed);
         particle.lifetime = sf::milliseconds(rand() % PARTICLE_LIFETIME_MS + 200);
         particles.push_back(particle);

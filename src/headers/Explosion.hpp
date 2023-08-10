@@ -9,14 +9,13 @@ struct Particle {
     sf::Vector2f velocity;
     sf::Time lifetime;
 };
-
-const int NUM_PARTICLES = 200;
 const int PARTICLE_LIFETIME_MS = 500;
-const float PARTICLE_SPEED = 500.0f;
 
 class Explosion {
 private:
-    // Create the particles vector
+    int particleNum = 200;
+    float particleSpeed = 500.0f;
+
     std::vector<Particle> particles;
     sf::Texture particleTexture;
     sf::Sprite particleSprite;
@@ -26,7 +25,7 @@ private:
 
 public:
     bool isDone = false;
-    Explosion(Vec2f pos, int lifetime_ms);
+    Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime);
     void draw(sf::RenderWindow& window);
     void update(sf::RenderWindow& window);
 };
