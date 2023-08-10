@@ -52,7 +52,8 @@ void Turret::resetCooldown() {
 
 void Turret::fire() {
     Vec2f muzzlePos = this->getMuzzlePosition();
-    Bullet bullet(muzzlePos.x, muzzlePos.y, Vec2f(std::cos(this->angleRads), std::sin(this->angleRads)));
+    Vec2f bulletVector = Vec2f(std::cos(this->angleRads), std::sin(this->angleRads));
+    Bullet bullet(muzzlePos, bulletVector, 20);
     Bullets::add(bullet);
     AudioLoader::turretFire.play();
     this->resetCooldown();

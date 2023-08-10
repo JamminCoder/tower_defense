@@ -5,9 +5,9 @@
 #include "TextureLoader.hpp"
 #include "AudioLoader.hpp"
 
-Bullet::Bullet(int x, int y, Vec2f velocity) :
-    Entity(x, y, 5, 5, ""),
-    vel(Vec2f(velocity.x * 20, velocity.y * 20))
+Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
+    Entity(pos.x, pos.y, 5, 5, ""),
+    vel(Vec2f(vector.x * speed, vector.y * speed))
 {
     this->showHitbox();
     this->sprite.setTexture(TextureLoader::particleTexture);

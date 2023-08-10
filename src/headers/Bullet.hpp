@@ -10,7 +10,7 @@ private:
 
 public:
     int speed;
-    Bullet(int x, int y, Vec2f velocity);
+    Bullet(Vec2f pos, Vec2f vector, float speed);
     void update();
     void draw(sf::RenderWindow& window);
     void explode();
