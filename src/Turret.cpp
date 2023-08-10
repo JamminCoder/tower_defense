@@ -20,6 +20,10 @@ Vec2f Turret::getMuzzlePosition() {
     );
 }
 
+Vec2f Turret::getFiringVector() {
+    return Vec2f(std::cos(this->angleRads), std::sin(this->angleRads));
+}
+
 void Turret::update(sf::RenderWindow& window) {
     Vec2i mousePos = sf::Mouse::getPosition(window);
 
@@ -52,8 +56,7 @@ void Turret::resetCooldown() {
 
 void Turret::fire() {
     Vec2f muzzlePos = this->getMuzzlePosition();
-    Vec2f bulletVector = Vec2f(std::cos(this->angleRads), std::sin(this->angleRads));
-    Bullet bullet(muzzlePos, bulletVector, 20);
+    Bullet bullet(muzzlePos, this->getFiringVector(), 20);
     Bullets::add(bullet);
     AudioLoader::turretFire.play();
     this->resetCooldown();

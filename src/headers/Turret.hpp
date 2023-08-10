@@ -20,6 +20,7 @@ public:
     void draw(sf::RenderWindow& window);
 
     Vec2f getMuzzlePosition();
+    Vec2f getFiringVector();
     void fire();
     void resetCooldown();
 };
