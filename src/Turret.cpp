@@ -5,6 +5,7 @@
 #include "Bullet.hpp"
 #include "Bullets.hpp"
 #include "AudioLoader.hpp"
+#include "globals.hpp"
 
 Turret::Turret(int x, int y, int length) :
     Entity(x, y, 2, length, "resources/turret.png")
@@ -42,7 +43,7 @@ void Turret::update(sf::RenderWindow& window) {
         if (this->cooldown <= sf::Time::Zero) this->fire();
     }
 
-    if (this->cooldown > sf::Time::Zero) this->cooldown -= sf::milliseconds(1000 / 30);
+    if (this->cooldown > sf::Time::Zero) this->cooldown -= sf::milliseconds(1000 / FRAME_RATE);
 }
 
 void Turret::draw(sf::RenderWindow& window) {
