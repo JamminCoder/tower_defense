@@ -9,7 +9,7 @@ private:
     Vec2f vel;
 
 public:
-    int speed;
+    float speed;
     Bullet(Vec2f pos, Vec2f vector, float speed);
     void update();
     void draw(sf::RenderWindow& window);

@@ -9,6 +9,7 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     Entity(pos.x, pos.y, 5, 5, ""),
     vel(Vec2f(vector.x * speed, vector.y * speed))
 {
+    this->speed = speed;
     this->showHitbox();
     this->sprite.setTexture(TextureLoader::particleTexture);
 }
