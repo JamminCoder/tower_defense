@@ -23,6 +23,9 @@ int main()
     Turret turret(WINDOW_W / 2, WINDOW_H / 2 + WINDOW_H / 4, 64);
     turret.showHitbox();
     
+    sf::Clock clock;
+    float timeDelta;
+
     /* Main Loop */
     while (window.isOpen())
     {
@@ -36,14 +39,15 @@ int main()
             }
         }
 
+        timeDelta = clock.restart().asSeconds();
 
         /* Display */
-        turret.draw(window);
+        turret.draw(window, timeDelta);
         Bullets::draw(window);
 
         /* Updates */
-        Bullets::update(window);
-        ExplosionManager::draw(window);
+        Bullets::update(window, timeDelta);
+        ExplosionManager::draw(window, timeDelta);
         window.display();
         window.clear();
     }

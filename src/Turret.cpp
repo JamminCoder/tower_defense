@@ -25,7 +25,7 @@ Vec2f Turret::getFiringVector() {
     return Vec2f(std::cos(this->angleRads), std::sin(this->angleRads));
 }
 
-void Turret::update(sf::RenderWindow& window) {
+void Turret::update(sf::RenderWindow& window, float timeDelta) {
     Vec2i mousePos = sf::Mouse::getPosition(window);
 
     // Optional: Convert mouse position to world coordinates if needed
@@ -38,16 +38,17 @@ void Turret::update(sf::RenderWindow& window) {
     this->sprite.setRotation(this->angle);
     this->hitbox.setRotation(this->angle);
 
+    if (this->cooldown > sf::Time::Zero) {
+        this->cooldown -= sf::seconds(timeDelta);
+    }
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         if (this->cooldown <= sf::Time::Zero) this->fire();
     }
-
-    if (this->cooldown > sf::Time::Zero) this->cooldown -= sf::milliseconds(1000 / FRAME_RATE);
 }
 
-void Turret::draw(sf::RenderWindow& window) {
-    this->update(window);
+void Turret::draw(sf::RenderWindow& window, float timeDelta) {
+    this->update(window, timeDelta);
     window.draw(this->sprite);
 }
 
@@ -57,7 +58,7 @@ void Turret::resetCooldown() {
 
 void Turret::fire() {
     Vec2f muzzlePos = this->getMuzzlePosition();
-    Bullet bullet(muzzlePos, this->getFiringVector(), 20);
+    Bullet bullet(muzzlePos, this->getFiringVector(), 500);
     Bullets::add(bullet);
     AudioLoader::turretFire.play();
     this->resetCooldown();

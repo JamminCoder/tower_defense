@@ -5,7 +5,7 @@
 
 std::vector<Bullet> Bullets::bullets; 
 
-void Bullets::update(sf::RenderWindow& window) {
+void Bullets::update(sf::RenderWindow& window, float timeDelta) {
     for (int i = 0; i < Bullets::bullets.size(); i++) {
         Bullet& bullet = Bullets::bullets.at(i);
         Vec2f pos = bullet.sprite.getPosition();
@@ -14,7 +14,7 @@ void Bullets::update(sf::RenderWindow& window) {
             (pos.x <= WINDOW_W && pos.x > 0) &&
             (pos.y <= WINDOW_H && pos.y > 0)
         ) {
-            bullet.update();
+            bullet.update(timeDelta);
         } else {
             bullet.explode();
             Bullets::bullets.erase(Bullets::bullets.begin() + i);

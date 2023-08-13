@@ -11,7 +11,7 @@ private:
 public:
     float speed;
     Bullet(Vec2f pos, Vec2f vector, float speed);
-    void update();
+    void update(float timeDelta);
     void draw(sf::RenderWindow& window);
     void explode();
 };

@@ -15,9 +15,9 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
 }
 
 
-void Bullet::update() {
-    this->sprite.move(vel);
-    this->hitbox.move(vel);
+void Bullet::update(float timeDelta) {
+    this->sprite.move(vel * timeDelta);
+    this->hitbox.move(vel * timeDelta);
     this->pos = this->hitbox.getPosition();
 }
 
