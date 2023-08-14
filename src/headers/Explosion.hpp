@@ -21,11 +21,12 @@ private:
     sf::Sprite particleSprite;
     sf::Time lifeDecrease;
     sf::Time lifetime;
+    sf::Time maxLifetime;
     Vec2f pos;
 
 public:
     bool isDone = false;
     Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime);
     void draw(sf::RenderWindow& window);
-    void update(sf::RenderWindow& window);
+    void update(sf::RenderWindow& window, float timeDelta);
 };

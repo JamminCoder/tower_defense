@@ -31,14 +31,15 @@ void Explosion::draw(sf::RenderWindow& window) {
     }
 }
 
-void Explosion::update(sf::RenderWindow& window) {
+void Explosion::update(sf::RenderWindow& window, float timeDelta) {
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
-        particle.position.x += particle.velocity.x * sf::seconds(1.0f / 60.0f).asSeconds();
-        particle.position.y += particle.velocity.y * sf::seconds(1.0f / 60.0f).asSeconds();
+        particle.position.x += particle.velocity.x * timeDelta;
+        particle.position.y += particle.velocity.y * timeDelta;
         
-        float alpha = particle.lifetime.asSeconds() / (this->lifetime.asMilliseconds() / 1000.0f);
-        alpha /= alpha / lifetime.asSeconds();
+        float alpha = particle.lifetime.asSeconds() / this->lifetime.asSeconds();
+        alpha *= this->lifetime.asSeconds();
+
         particleSprite.setPosition(particle.position);
         particleSprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(alpha * 255)));
         window.draw(particleSprite);
