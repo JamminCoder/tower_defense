@@ -14,4 +14,5 @@ public:
     void update(float timeDelta);
     void draw(sf::RenderWindow& window);
     void explode();
+    void setPos(Vec2f pos);
 };

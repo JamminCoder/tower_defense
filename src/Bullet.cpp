@@ -14,6 +14,10 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     this->sprite.setTexture(TextureLoader::particleTexture);
 }
 
+void Bullet::setPos(Vec2f pos) {
+    this->sprite.setPosition(pos);
+    this->hitbox.setPosition(pos);
+}
 
 void Bullet::update(float timeDelta) {
     this->sprite.move(vel * timeDelta);
