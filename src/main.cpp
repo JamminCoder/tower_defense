@@ -22,6 +22,7 @@ int main()
 
     Turret turret(WINDOW_W / 2, WINDOW_H / 2 + WINDOW_H / 4, 64);
     turret.showHitbox();
+    turret.setPos(Vec2f(100, 100));
     
     sf::Clock clock;
     float timeDelta;
