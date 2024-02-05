@@ -8,6 +8,7 @@ class Entity {
 public:
     Vec2f pos;
     Vec2f size;
+    Vec2f vel;
     bool isShowingHitbox = false;
     sf::Texture texture;
     sf::Sprite sprite;

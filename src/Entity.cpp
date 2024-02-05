@@ -3,7 +3,8 @@
 
 Entity::Entity(int x, int y, int width, int height, const char* texturePath)
     : pos(Vec2f(x, y)), 
-    size(Vec2f(width, height))
+    size(Vec2f(width, height)),
+    vel(Vec2f(0, 0))
 {
     sprite.setPosition(pos);
     hitbox.setPosition(pos);

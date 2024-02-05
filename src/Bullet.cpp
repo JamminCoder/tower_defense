@@ -6,17 +6,17 @@
 #include "AudioLoader.hpp"
 
 Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
-    Entity(pos.x, pos.y, 5, 5, ""),
-    vel(Vec2f(vector.x * speed, vector.y * speed))
+    Entity(pos.x, pos.y, 5, 5, "")
 {
     this->speed = speed;
-    this->showHitbox();
+    this->vel = Vec2f(vector.x * speed, vector.y * speed);
     this->sprite.setTexture(TextureLoader::particleTexture);
+    this->showHitbox();
 }
 
 void Bullet::update(float timeDelta) {
-    this->sprite.move(vel * timeDelta);
-    this->hitbox.move(vel * timeDelta);
+    this->sprite.move(this->vel * timeDelta);
+    this->hitbox.move(this->vel * timeDelta);
     this->pos = this->hitbox.getPosition();
 }
 
