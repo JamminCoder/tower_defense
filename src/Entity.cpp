@@ -24,6 +24,11 @@ void Entity::draw(sf::RenderWindow& window) {
 }
 
 
+void Entity::setPos(Vec2f pos) {
+    this->sprite.setPosition(pos);
+    this->hitbox.setPosition(pos);
+}
+
 void Entity::showHitbox() {
     isShowingHitbox = true;
 }

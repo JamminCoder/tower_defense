@@ -17,4 +17,5 @@ public:
     void draw(sf::RenderWindow& window);
     void showHitbox();
     void hideHitbox();
+    void setPos(Vec2f pos);
 };
