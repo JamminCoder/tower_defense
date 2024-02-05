@@ -26,11 +26,11 @@ Vec2f Turret::getFiringVector() {
     return Vec2f(std::cos(this->angleRads), std::sin(this->angleRads));
 }
 
-void Turret::update(sf::RenderWindow& window) {
-    Vec2i mousePos = sf::Mouse::getPosition(window);
+void Turret::update() {
+    Vec2i mousePos = sf::Mouse::getPosition(Game::window);
 
     // Optional: Convert mouse position to world coordinates if needed
-    Vec2f worldMousePos = window.mapPixelToCoords(mousePos);
+    Vec2f worldMousePos = Game::window.mapPixelToCoords(mousePos);
 
     // Calculate angle in radians between line and mouse position
     this->angleRads = std::atan2(worldMousePos.y - pos.y, worldMousePos.x - pos.x);
@@ -48,9 +48,9 @@ void Turret::update(sf::RenderWindow& window) {
     }
 }
 
-void Turret::draw(sf::RenderWindow& window) {
-    this->update(window);
-    window.draw(this->sprite);
+void Turret::draw() {
+    this->update();
+    Game::window.draw(this->sprite);
 }
 
 void Turret::resetCooldown() {

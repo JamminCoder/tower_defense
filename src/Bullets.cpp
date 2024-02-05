@@ -5,7 +5,7 @@
 
 std::vector<Bullet> Bullets::bullets; 
 
-void Bullets::update(sf::RenderWindow& window) {
+void Bullets::update() {
     for (int i = 0; i < Bullets::bullets.size(); i++) {
         Bullet& bullet = Bullets::bullets.at(i);
         Vec2f pos = bullet.sprite.getPosition();
@@ -20,9 +20,9 @@ void Bullets::update(sf::RenderWindow& window) {
     }
 }
 
-void Bullets::draw(sf::RenderWindow& window) {
+void Bullets::draw() {
     for (Bullet& bullet : Bullets::bullets) {
-        bullet.draw(window);
+        bullet.draw();
     }
 }
 

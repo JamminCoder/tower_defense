@@ -15,9 +15,8 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(WINDOW_W, WINDOW_H), "Tower Defense");
-    window.setFramerateLimit(FRAME_RATE);
 
+    Game::init();
     AudioLoader::load();
     TextureLoader::loadTextures();
 
@@ -25,14 +24,14 @@ int main()
     turret.showHitbox();
 
     /* Main Loop */
-    while (window.isOpen())
+    while (Game::window.isOpen())
     {
         /* Events */
         sf::Event event;
-        while (window.pollEvent(event))
+        while (Game::window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed) {
-                window.close();
+                Game::window.close();
                 Bullets::clear();
             }
         }
@@ -40,14 +39,14 @@ int main()
         Game::resetTimeDelta();
 
         /* Display */
-        turret.draw(window);
-        Bullets::draw(window);
+        turret.draw();
+        Bullets::draw();
 
         /* Updates */
-        Bullets::update(window);
-        ExplosionManager::draw(window);
+        Bullets::update();
+        ExplosionManager::draw();
 
-        window.display();
-        window.clear();
+        Game::window.display();
+        Game::window.clear();
     }
 }

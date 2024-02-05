@@ -1,3 +1,4 @@
+#include "Game.hpp"
 #include "Entity.hpp"
 #include <iostream>
 
@@ -18,10 +19,10 @@ Entity::Entity(int x, int y, int width, int height, const char* texturePath)
 }
 
 
-void Entity::draw(sf::RenderWindow& window) {
-    if (isShowingHitbox) window.draw(hitbox);
+void Entity::draw() {
+    if (isShowingHitbox) Game::window.draw(hitbox);
     this->sprite.setTexture(texture);
-    window.draw(sprite);
+    Game::window.draw(sprite);
 }
 
 

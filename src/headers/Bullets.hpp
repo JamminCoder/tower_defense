@@ -7,8 +7,8 @@
 class Bullets {
 public:
     static std::vector<Bullet> bullets;
-    static void update(sf::RenderWindow& window);
-    static void draw(sf::RenderWindow& window);
+    static void update();
+    static void draw();
     static void add(Bullet bullet);
     static void clear();
 };

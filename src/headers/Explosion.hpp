@@ -27,6 +27,6 @@ private:
 public:
     bool isDone = false;
     Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime);
-    void draw(sf::RenderWindow& window);
-    void update(sf::RenderWindow& window);
+    void draw();
+    void update();
 };

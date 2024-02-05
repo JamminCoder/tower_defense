@@ -17,7 +17,7 @@ Explosion::Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time l
 }
 
 
-void Explosion::draw(sf::RenderWindow& window) {
+void Explosion::draw() {
     if (this->isDone) return;
     
     // Generate new particles on mouse click (left mouse button)
@@ -32,7 +32,7 @@ void Explosion::draw(sf::RenderWindow& window) {
     }
 }
 
-void Explosion::update(sf::RenderWindow& window) {
+void Explosion::update() {
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
         particle.position.x += particle.velocity.x * Game::timeDelta;
@@ -43,7 +43,7 @@ void Explosion::update(sf::RenderWindow& window) {
 
         particleSprite.setPosition(particle.position);
         particleSprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(alpha * 255)));
-        window.draw(particleSprite);
+        Game::window.draw(particleSprite);
 
         particle.lifetime -= this->lifeDecrease;
 

@@ -16,8 +16,8 @@ public:
 
 
     Turret(int x, int y, int length);
-    void update(sf::RenderWindow& window);
-    void draw(sf::RenderWindow& window);
+    void update();
+    void draw();
 
     Vec2f getMuzzlePosition();
     Vec2f getFiringVector();

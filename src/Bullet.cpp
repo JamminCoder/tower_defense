@@ -27,7 +27,7 @@ void Bullet::explode() {
     AudioLoader::explosion.play();
 }
 
-void Bullet::draw(sf::RenderWindow& window) {
-    if (this->isShowingHitbox) window.draw(this->hitbox);
-    window.draw(this->sprite);
+void Bullet::draw() {
+    if (this->isShowingHitbox) Game::window.draw(this->hitbox);
+    Game::window.draw(this->sprite);
 }
