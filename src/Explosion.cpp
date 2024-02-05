@@ -5,6 +5,7 @@
 #include "shorthand.hpp"
 #include "globals.hpp"
 #include "TextureLoader.hpp"
+#include "Game.hpp"
 
 
 Explosion::Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime) {
@@ -31,11 +32,11 @@ void Explosion::draw(sf::RenderWindow& window) {
     }
 }
 
-void Explosion::update(sf::RenderWindow& window, float timeDelta) {
+void Explosion::update(sf::RenderWindow& window) {
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
-        particle.position.x += particle.velocity.x * timeDelta;
-        particle.position.y += particle.velocity.y * timeDelta;
+        particle.position.x += particle.velocity.x * Game::timeDelta;
+        particle.position.y += particle.velocity.y * Game::timeDelta;
         
         float alpha = particle.lifetime.asSeconds() / this->lifetime.asSeconds();
         alpha *= this->lifetime.asSeconds();

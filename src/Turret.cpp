@@ -6,6 +6,7 @@
 #include "Bullets.hpp"
 #include "AudioLoader.hpp"
 #include "globals.hpp"
+#include "Game.hpp"
 
 Turret::Turret(int x, int y, int length) :
     Entity(x, y, 2, length, "resources/turret.png")
@@ -25,7 +26,7 @@ Vec2f Turret::getFiringVector() {
     return Vec2f(std::cos(this->angleRads), std::sin(this->angleRads));
 }
 
-void Turret::update(sf::RenderWindow& window, float timeDelta) {
+void Turret::update(sf::RenderWindow& window) {
     Vec2i mousePos = sf::Mouse::getPosition(window);
 
     // Optional: Convert mouse position to world coordinates if needed
@@ -39,7 +40,7 @@ void Turret::update(sf::RenderWindow& window, float timeDelta) {
     this->hitbox.setRotation(this->angle);
 
     if (this->cooldown > sf::Time::Zero) {
-        this->cooldown -= sf::seconds(timeDelta);
+        this->cooldown -= sf::seconds(Game::timeDelta);
     }
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -47,8 +48,8 @@ void Turret::update(sf::RenderWindow& window, float timeDelta) {
     }
 }
 
-void Turret::draw(sf::RenderWindow& window, float timeDelta) {
-    this->update(window, timeDelta);
+void Turret::draw(sf::RenderWindow& window) {
+    this->update(window);
     window.draw(this->sprite);
 }
 

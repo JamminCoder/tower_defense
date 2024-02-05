@@ -4,6 +4,7 @@
 #include "ExplosionManager.hpp"
 #include "TextureLoader.hpp"
 #include "AudioLoader.hpp"
+#include "Game.hpp"
 
 Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     Entity(pos.x, pos.y, 5, 5, "")
@@ -14,9 +15,9 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     this->showHitbox();
 }
 
-void Bullet::update(float timeDelta) {
-    this->sprite.move(this->vel * timeDelta);
-    this->hitbox.move(this->vel * timeDelta);
+void Bullet::update() {
+    this->sprite.move(this->vel * Game::timeDelta);
+    this->hitbox.move(this->vel * Game::timeDelta);
     this->pos = this->hitbox.getPosition();
 }
 

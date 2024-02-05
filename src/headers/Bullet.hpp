@@ -8,7 +8,7 @@ class Bullet : public Entity {
 public:
     float speed;
     Bullet(Vec2f pos, Vec2f vector, float speed);
-    void update(float timeDelta);
+    void update();
     void draw(sf::RenderWindow& window);
     void explode();
 };

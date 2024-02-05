@@ -11,6 +11,7 @@
 #include "ExplosionManager.hpp"
 #include "TextureLoader.hpp"
 #include "AudioLoader.hpp"
+#include "Game.hpp"
 
 int main()
 {
@@ -22,10 +23,6 @@ int main()
 
     Turret turret(WINDOW_W / 2, WINDOW_H / 2 + WINDOW_H / 4, 64);
     turret.showHitbox();
-    turret.setPos(Vec2f(100, 100));
-    
-    sf::Clock clock;
-    float timeDelta;
 
     /* Main Loop */
     while (window.isOpen())
@@ -40,15 +37,16 @@ int main()
             }
         }
 
-        timeDelta = clock.restart().asSeconds();
+        Game::resetTimeDelta();
 
         /* Display */
-        turret.draw(window, timeDelta);
+        turret.draw(window);
         Bullets::draw(window);
 
         /* Updates */
-        Bullets::update(window, timeDelta);
-        ExplosionManager::draw(window, timeDelta);
+        Bullets::update(window);
+        ExplosionManager::draw(window);
+
         window.display();
         window.clear();
     }

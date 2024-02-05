@@ -19,4 +19,5 @@ public:
     void showHitbox();
     void hideHitbox();
     void setPos(Vec2f pos);
+    void move(Vec2f vector);
 };
