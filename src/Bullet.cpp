@@ -22,7 +22,7 @@ void Bullet::update() {
 }
 
 void Bullet::explode() {
-    Explosion explosion(this->pos, 100, 500.f, sf::milliseconds(200));
+    Explosion explosion(this->pos, 100, 500.f, sf::milliseconds(250));
     ExplosionManager::add(explosion);
     AudioLoader::explosion.play();
 }

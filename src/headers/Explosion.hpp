@@ -20,6 +20,7 @@ private:
     sf::Texture particleTexture;
     sf::Sprite particleSprite;
     sf::Time lifeDecrease;
+    sf::Clock startTime;
     sf::Time lifetime;
     sf::Time maxLifetime;
     Vec2f pos;

@@ -10,7 +10,7 @@
 Explosion::Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime) {
     this->pos = pos;
     this->lifetime = lifetime;
-    this->lifeDecrease = sf::milliseconds(1000 / Game::FRAME_RATE);
+    this->startTime = sf::Clock();
     this->particleSprite.setOrigin(particleTexture.getSize().x / 2.0f, particleTexture.getSize().y / 2.0f);
     this->particleSprite.setTexture(TextureLoader::particleTexture);
 }
@@ -32,6 +32,7 @@ void Explosion::draw() {
 }
 
 void Explosion::update() {
+
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
         particle.position.x += particle.velocity.x * Game::timeDelta;
@@ -52,8 +53,9 @@ void Explosion::update() {
         }
     }
     
-    this->lifetime -= this->lifeDecrease;
-    if (this->lifetime <= sf::Time::Zero) {
+
+    sf::Time elapsed = this->startTime.getElapsedTime();
+    if (elapsed >= this->lifetime) {
         this->isDone = true;
     }
 
