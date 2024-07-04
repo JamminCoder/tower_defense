@@ -10,7 +10,7 @@
 Explosion::Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime) {
     this->pos = pos;
     this->lifetime = lifetime;
-    this->lifeDecrease = sf::milliseconds(1000 / FRAME_RATE);
+    this->lifeDecrease = sf::milliseconds(1000 / Game::FRAME_RATE);
     this->particleSprite.setOrigin(particleTexture.getSize().x / 2.0f, particleTexture.getSize().y / 2.0f);
     this->particleSprite.setTexture(TextureLoader::particleTexture);
 }

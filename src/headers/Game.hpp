@@ -2,12 +2,13 @@
 #include <SFML/Graphics.hpp>
 
 
-#define WINDOW_W 1200
-#define WINDOW_H 800
-#define FRAME_RATE 60
-
 class Game {
 public:
+    static const char* NAME;
+    static int WINDOW_W;
+    static int WINDOW_H;
+    static int FRAME_RATE;
+
     static sf::Clock clock;
     static float timeDelta;
     static sf::RenderWindow window;

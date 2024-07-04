@@ -9,7 +9,7 @@ struct Particle {
     sf::Vector2f velocity;
     sf::Time lifetime;
 };
-const int PARTICLE_LIFETIME_MS = 500;
+// const int PARTICLE_LIFETIME_MS = 500;
 
 class Explosion {
 private:

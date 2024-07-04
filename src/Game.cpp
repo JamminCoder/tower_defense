@@ -2,16 +2,20 @@
 #include <SFML/Graphics.hpp>
 
 
-
-
 // Initialize static game variables
-sf::Clock Game::clock;
+const char* Game::NAME = "Tower Defense";
+int Game::WINDOW_H = 800;
+int Game::WINDOW_W = 1200;
+int Game::FRAME_RATE = 30;
 float Game::timeDelta;
-sf::RenderWindow Game::window(sf::VideoMode(WINDOW_W, WINDOW_H), "Tower Defense");
+
+
+sf::Clock Game::clock;
+sf::RenderWindow Game::window(sf::VideoMode(Game::WINDOW_W, Game::WINDOW_H), Game::NAME);
 
 
 void Game::init() {
-    Game::window.setFramerateLimit(FRAME_RATE);
+    Game::window.setFramerateLimit(Game::FRAME_RATE);
     Game::timeDelta = Game::clock.restart().asSeconds();
 }
 

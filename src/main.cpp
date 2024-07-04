@@ -19,7 +19,7 @@ int main()
     AudioLoader::load();
     TextureLoader::loadTextures();
 
-    Turret turret(WINDOW_W / 2, WINDOW_H / 2 + WINDOW_H / 4, 64);
+    Turret turret(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
     turret.showHitbox();
 
     /* Main Loop */
