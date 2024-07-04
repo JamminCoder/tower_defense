@@ -3,7 +3,6 @@
 #include <iostream>
 #include "Explosion.hpp"
 #include "shorthand.hpp"
-#include "globals.hpp"
 #include "TextureLoader.hpp"
 #include "Game.hpp"
 

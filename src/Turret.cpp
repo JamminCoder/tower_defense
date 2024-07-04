@@ -5,7 +5,6 @@
 #include "Bullet.hpp"
 #include "Bullets.hpp"
 #include "AudioLoader.hpp"
-#include "globals.hpp"
 #include "Game.hpp"
 
 Turret::Turret(int x, int y, int length) :

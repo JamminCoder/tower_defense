@@ -7,7 +7,6 @@
 #include "Tower.hpp"
 #include "Turret.hpp"
 #include "Bullets.hpp"
-#include "globals.hpp"
 #include "ExplosionManager.hpp"
 #include "TextureLoader.hpp"
 #include "AudioLoader.hpp"

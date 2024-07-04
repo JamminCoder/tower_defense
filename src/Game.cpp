@@ -1,9 +1,7 @@
 #include "Game.hpp"
 #include <SFML/Graphics.hpp>
 
-#define WINDOW_W 1200
-#define WINDOW_H 800
-#define FRAME_RATE 30
+
 
 
 // Initialize static game variables
@@ -14,6 +12,7 @@ sf::RenderWindow Game::window(sf::VideoMode(WINDOW_W, WINDOW_H), "Tower Defense"
 
 void Game::init() {
     Game::window.setFramerateLimit(FRAME_RATE);
+    Game::timeDelta = Game::clock.restart().asSeconds();
 }
 
 

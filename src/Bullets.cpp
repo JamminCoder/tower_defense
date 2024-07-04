@@ -1,7 +1,7 @@
 #include "Bullets.hpp"
-#include "globals.hpp"
 #include "Explosion.hpp"
 #include <iostream>
+#include "Game.hpp"
 
 std::vector<Bullet> Bullets::bullets; 
 
