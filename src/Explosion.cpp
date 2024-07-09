@@ -38,11 +38,11 @@ void Explosion::update() {
         particle.position.x += particle.velocity.x * Game::timeDelta;
         particle.position.y += particle.velocity.y * Game::timeDelta;
         
-        float alpha = particle.lifetime.asSeconds() / this->lifetime.asSeconds();
-        alpha *= this->lifetime.asSeconds();
+        float alpha = particle.lifetime.asMilliseconds() / 10 / (float)this->startTime.getElapsedTime().asMilliseconds();
 
+        std::cout << "alpha: " << alpha << std::endl;
         particleSprite.setPosition(particle.position);
-        particleSprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(alpha * 255)));
+        particleSprite.setColor(sf::Color(255, 255, 255, alpha * 255));
         Game::window.draw(particleSprite);
 
         particle.lifetime -= this->lifeDecrease;
