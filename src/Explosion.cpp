@@ -7,20 +7,24 @@
 #include "Game.hpp"
 
 
-Explosion::Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime) {
+Explosion::Explosion(Vec2f pos, int particleCount, float particleSpeed, sf::Time lifetime) {
     this->pos = pos;
+    this->particleCount = particleCount;
+    this->particleSpeed = particleSpeed;
     this->lifetime = lifetime;
+
     this->startTime = sf::Clock();
     this->particleSprite.setOrigin(particleTexture.getSize().x / 2.0f, particleTexture.getSize().y / 2.0f);
     this->particleSprite.setTexture(TextureLoader::particleTexture);
 }
 
 
+
 void Explosion::draw() {
     if (this->isDone) return;
     
     // Generate new particles on mouse click (left mouse button)
-    for (int i = 0; i < this->particleNum; ++i) {
+    for (int i = 0; i < this->particleCount; ++i) {
         Particle particle;
         particle.position = this->pos;
         float angle = static_cast<float>(rand() % 360) * 3.14f / 180.0f;

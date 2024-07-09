@@ -14,8 +14,8 @@ struct Particle {
 
 class Explosion {
 private:
-    int particleNum = 200;
-    float particleSpeed = 500.0f;
+    int particleCount;
+    float particleSpeed;
 
     std::vector<Particle> particles;
     sf::Texture particleTexture;

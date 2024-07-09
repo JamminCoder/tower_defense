@@ -22,7 +22,9 @@ void Bullet::update() {
 }
 
 void Bullet::explode() {
-    Explosion explosion(this->pos, 100, 500.f, sf::milliseconds(250));
+    int particleCount = 100;
+    int particleSpeed = 500.f;
+    Explosion explosion(this->pos, particleCount, particleSpeed, sf::milliseconds(250));
     ExplosionManager::add(explosion);
     AudioLoader::explosion.play();
 }
