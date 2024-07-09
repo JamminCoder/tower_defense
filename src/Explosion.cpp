@@ -26,16 +26,20 @@ void Explosion::draw() {
     
     // Generate new particles on mouse click (left mouse button)
     for (int i = 0; i < this->particleCount; ++i) {
-        Vec2f particlePos = this->pos;
-        float particleAngle = static_cast<float>(rand() % 360) * 3.14f / 180.0f;
-        float particleSpeed = static_cast<float>(rand() % 360) + this->particleSpeed;
-        Vec2f particleVelocity = Vec2f(std::cos(particleAngle) * particleSpeed, std::sin(particleAngle) * particleSpeed);
-        sf::Time particleLifetime = sf::milliseconds(rand() % this->lifetime.asMilliseconds() + 200);
-
-        Particle particle(particlePos, particleVelocity, particleLifetime);
-
-        particles.push_back(particle);
+        Particle randParticle = this->randomParticle();
+        particles.push_back(randParticle);
     }
+}
+
+Particle Explosion::randomParticle() {
+    Vec2f particlePos = this->pos;
+    float particleAngle = (rand() % 360) * 3.14f / 180.0f;
+    float particleSpeed = (rand() % 360) + this->particleSpeed;
+    Vec2f particleVelocity = Vec2f(std::cos(particleAngle) * particleSpeed, std::sin(particleAngle) * particleSpeed);
+    sf::Time particleLifetime = sf::milliseconds(rand() % this->lifetime.asMilliseconds() + 200);
+
+    Particle particle(particlePos, particleVelocity, particleLifetime);
+    return particle;
 }
 
 void Explosion::update() {

@@ -22,8 +22,8 @@ void Bullet::update() {
 }
 
 void Bullet::explode() {
-    int particleCount = 100;
-    int particleSpeed = 500.f;
+    int particleCount = 200;
+    int particleSpeed = 200.f;
     Explosion explosion(this->pos, particleCount, particleSpeed, sf::milliseconds(250));
     ExplosionManager::add(explosion);
     AudioLoader::explosion.play();

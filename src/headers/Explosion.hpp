@@ -25,4 +25,6 @@ public:
     Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime);
     void draw();
     void update();
+
+    Particle randomParticle();
 };
