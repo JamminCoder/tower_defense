@@ -3,14 +3,8 @@
 #include <vector>
 #include <ctime>
 #include "shorthand.hpp"
+#include "Particle.hpp"
 
-struct Particle {
-    sf::Vector2f position;
-    sf::Vector2f velocity;
-    sf::Time lifetime;
-};
-
-// const int PARTICLE_LIFETIME_MS = 500;
 
 class Explosion {
 private:

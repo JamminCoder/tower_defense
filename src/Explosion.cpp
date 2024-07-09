@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
 #include <iostream>
+#include "Particle.hpp"
 #include "Explosion.hpp"
 #include "shorthand.hpp"
 #include "TextureLoader.hpp"
@@ -25,12 +26,14 @@ void Explosion::draw() {
     
     // Generate new particles on mouse click (left mouse button)
     for (int i = 0; i < this->particleCount; ++i) {
-        Particle particle;
-        particle.position = this->pos;
-        float angle = static_cast<float>(rand() % 360) * 3.14f / 180.0f;
-        float speed = static_cast<float>(rand() % 360) + this->particleSpeed;
-        particle.velocity = Vec2f(std::cos(angle) * speed, std::sin(angle) * speed);
-        particle.lifetime = sf::milliseconds(rand() % this->lifetime.asMilliseconds() + 200);
+        Vec2f particlePos = this->pos;
+        float particleAngle = static_cast<float>(rand() % 360) * 3.14f / 180.0f;
+        float particleSpeed = static_cast<float>(rand() % 360) + this->particleSpeed;
+        Vec2f particleVelocity = Vec2f(std::cos(particleAngle) * particleSpeed, std::sin(particleAngle) * particleSpeed);
+        sf::Time particleLifetime = sf::milliseconds(rand() % this->lifetime.asMilliseconds() + 200);
+
+        Particle particle(particlePos, particleVelocity, particleLifetime);
+
         particles.push_back(particle);
     }
 }
@@ -39,13 +42,12 @@ void Explosion::update() {
 
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
-        particle.position.x += particle.velocity.x * Game::timeDelta;
-        particle.position.y += particle.velocity.y * Game::timeDelta;
+        particle.pos.x += particle.velocity.x * Game::timeDelta;
+        particle.pos.y += particle.velocity.y * Game::timeDelta;
         
         float alpha = particle.lifetime.asMilliseconds() / 10 / (float)this->startTime.getElapsedTime().asMilliseconds();
 
-        std::cout << "alpha: " << alpha << std::endl;
-        particleSprite.setPosition(particle.position);
+        particleSprite.setPosition(particle.pos);
         particleSprite.setColor(sf::Color(255, 255, 255, alpha * 255));
         Game::window.draw(particleSprite);
 
