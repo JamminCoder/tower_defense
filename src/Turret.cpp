@@ -53,12 +53,13 @@ void Turret::draw() {
 }
 
 void Turret::resetCooldown() {
-    this->cooldown = sf::milliseconds(500);
+    this->cooldown = sf::milliseconds(100);
 }
 
 void Turret::fire() {
     Vec2f muzzlePos = this->getMuzzlePosition();
-    Bullet bullet(muzzlePos, this->getFiringVector(), 500);
+    float bulletSpeed = 500;
+    Bullet bullet(muzzlePos, this->getFiringVector(), bulletSpeed);
     Bullets::add(bullet);
     AudioLoader::turretFire.play();
     this->resetCooldown();

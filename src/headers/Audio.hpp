@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Audio.hpp>
 
-#define SOUND_LIMIT 16
+#define SOUND_LIMIT 32
 
 class Audio {
 private:
