@@ -16,15 +16,8 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     this->showHitbox();
 }
 
-Vec2f Bullet::getPos() {
-    return this->hitbox.getPosition();
-}
-
 void Bullet::update(int bulletIndex) {
-    this->sprite.move(this->vel * Game::timeDelta);
-    this->hitbox.move(this->vel * Game::timeDelta);
-    this->pos = this->getPos();
-    
+    this->move();
     if (this->hasHitWall()) {
         this->explode();
         Bullets::bullets.erase(Bullets::bullets.begin() + bulletIndex);

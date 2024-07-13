@@ -13,9 +13,7 @@ void Bullets::update() {
 }
 
 void Bullets::draw() {
-    for (Bullet& bullet : Bullets::bullets) {
-        bullet.draw();
-    }
+    for (Bullet& bullet : Bullets::bullets) bullet.draw();
 }
 
 void Bullets::add(Bullet bullet) {

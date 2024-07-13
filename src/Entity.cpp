@@ -26,10 +26,21 @@ void Entity::draw() {
 }
 
 
+Vec2f Entity::getPos() {
+    return this->hitbox.getPosition();;
+}
+
 void Entity::setPos(Vec2f pos) {
     this->pos = pos;
     this->sprite.setPosition(pos);
     this->hitbox.setPosition(pos);
+}
+
+
+void Entity::move() {
+    this->sprite.move(this->vel * Game::timeDelta);
+    this->hitbox.move(this->vel * Game::timeDelta);
+    this->pos = this->getPos();
 }
 
 void Entity::showHitbox() {
