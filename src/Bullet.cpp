@@ -5,6 +5,7 @@
 #include "TextureLoader.hpp"
 #include "AudioLoader.hpp"
 #include "Game.hpp"
+#include "Bullets.hpp"
 
 Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     Entity(pos.x, pos.y, 5, 5, "")
@@ -15,10 +16,27 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     this->showHitbox();
 }
 
-void Bullet::update() {
+Vec2f Bullet::getPos() {
+    return this->hitbox.getPosition();
+}
+
+void Bullet::update(int bulletIndex) {
     this->sprite.move(this->vel * Game::timeDelta);
     this->hitbox.move(this->vel * Game::timeDelta);
-    this->pos = this->hitbox.getPosition();
+    this->pos = this->getPos();
+    
+    if (this->hasHitWall()) {
+        this->explode();
+        Bullets::bullets.erase(Bullets::bullets.begin() + bulletIndex);
+    }
+}
+
+bool Bullet::hasHitWall() {
+    bool isCollision = !(
+        (this->pos.x <= Game::WINDOW_W && this->pos.x > 0) && 
+        (this->pos.y <= Game::WINDOW_H && this->pos.y > 0));
+
+    return isCollision;
 }
 
 void Bullet::explode() {
