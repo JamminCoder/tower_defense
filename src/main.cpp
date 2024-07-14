@@ -8,17 +8,13 @@
 #include "Turret.hpp"
 #include "Bullets.hpp"
 #include "ExplosionManager.hpp"
-#include "TextureLoader.hpp"
-#include "AudioLoader.hpp"
 #include "Game.hpp"
 
 int main()
 {
 
     Game::init();
-    AudioLoader::load();
-    TextureLoader::loadTextures();
-
+    
     Turret turret(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
     turret.showHitbox();
 
