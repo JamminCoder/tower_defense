@@ -7,7 +7,7 @@
 #include "Tower.hpp"
 #include "Turret.hpp"
 #include "Bullets.hpp"
-#include "ExplosionManager.hpp"
+#include "Explosions.hpp"
 #include "Game.hpp"
 
 int main()
@@ -36,11 +36,11 @@ int main()
         /* Display */
         turret.draw();
         Bullets::draw();
-        ExplosionManager::draw();
+        Explosions::draw();
 
         /* Updates */
         Bullets::update();
-        ExplosionManager::update();
+        Explosions::update();
 
         Game::window.display();
         Game::window.clear();

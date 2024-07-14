@@ -1,7 +1,7 @@
 #pragma once
 #include "Explosion.hpp"
 
-class ExplosionManager {
+class Explosions {
 public:
     static std::vector<Explosion> explosions;
 
