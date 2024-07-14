@@ -4,7 +4,7 @@
 
 Audio::Audio(const char* audioFilePath) {
     if (!buffer.loadFromFile(audioFilePath)) {
-        std::cerr << "Error loading shot file\n";
+        std::cerr << "Error loading audio file\n";
     }
 
     sound.setVolume(100);
