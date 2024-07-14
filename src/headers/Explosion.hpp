@@ -24,7 +24,7 @@ public:
     bool isDone = false;
     Explosion(Vec2f pos, int particleNum, float particleSpeed, sf::Time lifetime);
     void draw();
-    void update();
+    void update(int explosionIndex);
 
     Particle randomParticle();
 };

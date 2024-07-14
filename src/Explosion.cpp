@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Particle.hpp"
 #include "Explosion.hpp"
+#include "ExplosionManager.hpp"
 #include "shorthand.hpp"
 #include "TextureLoader.hpp"
 #include "Game.hpp"
@@ -42,7 +43,7 @@ Particle Explosion::randomParticle() {
     return particle;
 }
 
-void Explosion::update() {
+void Explosion::update(int explosionIndex) {
 
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
@@ -67,6 +68,7 @@ void Explosion::update() {
     sf::Time elapsed = this->startTime.getElapsedTime();
     if (elapsed >= this->lifetime) {
         this->isDone = true;
+        ExplosionManager::explosions.erase(ExplosionManager::explosions.begin() + explosionIndex);
     }
 
 }

@@ -40,10 +40,11 @@ int main()
         /* Display */
         turret.draw();
         Bullets::draw();
+        ExplosionManager::draw();
 
         /* Updates */
         Bullets::update();
-        ExplosionManager::draw();
+        ExplosionManager::update();
 
         Game::window.display();
         Game::window.clear();
