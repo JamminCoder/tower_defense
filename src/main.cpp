@@ -8,7 +8,11 @@
 #include "Turret.hpp"
 #include "Bullets.hpp"
 #include "Explosions.hpp"
+#include "Enemy.hpp"
+
 #include "Game.hpp"
+
+
 
 int main()
 {
@@ -17,6 +21,7 @@ int main()
     
     Turret turret(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
     turret.showHitbox();
+    Enemy enemy(Vec2f(200, 200));
 
     /* Main Loop */
     while (Game::window.isOpen())
@@ -30,15 +35,16 @@ int main()
                 Bullets::clear();
             }
         }
-
         Game::resetTimeDelta();
 
         /* Display */
         turret.draw();
+        enemy.draw();
         Bullets::draw();
         Explosions::draw();
 
         /* Updates */
+        enemy.update();
         Bullets::update();
         Explosions::update();
 

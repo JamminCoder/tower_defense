@@ -21,7 +21,7 @@ Entity::Entity(int x, int y, int width, int height, const char* texturePath)
 
 void Entity::draw() {
     if (isShowingHitbox) Game::window.draw(hitbox);
-    this->sprite.setTexture(texture);
+    // this->sprite.setTexture(texture);
     Game::window.draw(sprite);
 }
 
