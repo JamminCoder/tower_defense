@@ -12,7 +12,5 @@ Enemy::Enemy(Vec2f pos) :
 
 void Enemy::update() {
     this->vel = Vec2f(rand() % 20, rand() % 20);
-    // this->
-    this->move();
-    std::cout << this->getPos().x << std::endl;
+    Entity::update();
 }

@@ -12,6 +12,7 @@ Turret::Turret(int x, int y, int length) :
 {
     this->length = length;
     this->sprite.setOrigin(Vec2f(0, 0));
+    this->hitbox.setOrigin(Vec2f(0, 0));
 };
 
 Vec2f Turret::getMuzzlePosition() {
@@ -26,6 +27,8 @@ Vec2f Turret::getFiringVector() {
 }
 
 void Turret::update() {
+    Entity::update();
+
     Vec2i mousePos = sf::Mouse::getPosition(Game::window);
 
     // Optional: Convert mouse position to world coordinates if needed
@@ -45,11 +48,6 @@ void Turret::update() {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         if (this->cooldown <= sf::Time::Zero) this->fire();
     }
-}
-
-void Turret::draw() {
-    this->update();
-    Game::window.draw(this->sprite);
 }
 
 void Turret::resetCooldown() {

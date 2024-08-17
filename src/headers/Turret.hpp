@@ -17,7 +17,6 @@ public:
 
     Turret(int x, int y, int length);
     void update();
-    void draw();
 
     Vec2f getMuzzlePosition();
     Vec2f getFiringVector();

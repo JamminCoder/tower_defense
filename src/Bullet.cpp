@@ -17,7 +17,7 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
 }
 
 void Bullet::update(int bulletIndex) {
-    this->move();
+    Entity::update();
     if (this->hasHitWall()) {
         this->explode();
         Bullets::bullets.erase(Bullets::bullets.begin() + bulletIndex);
@@ -38,9 +38,4 @@ void Bullet::explode() {
     Explosion explosion(this->pos, particleCount, particleSpeed, sf::milliseconds(250));
     Explosions::add(explosion);
     AudioLoader::explosion.play();
-}
-
-void Bullet::draw() {
-    if (this->isShowingHitbox) Game::window.draw(this->hitbox);
-    Game::window.draw(this->sprite);
 }

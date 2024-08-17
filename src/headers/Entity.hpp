@@ -16,9 +16,12 @@ public:
 
     Entity(Vec2f pos, Vec2f vel, Vec2f size, const char* texturePath);
     void draw();
-    void showHitbox();
-    void hideHitbox();
+    void move();
+    virtual void update();
+    
     void setPos(Vec2f pos);
     Vec2f getPos();
-    void move();
+
+    void showHitbox();
+    void hideHitbox();
 };

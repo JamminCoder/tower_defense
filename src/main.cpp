@@ -37,14 +37,9 @@ int main()
         }
         Game::resetTimeDelta();
 
-        /* Display */
-        turret.draw();
-        enemy.draw();
-        Bullets::draw();
-        Explosions::draw();
-
-        /* Updates */
+        /* Updates and display */
         enemy.update();
+        turret.update();
         Bullets::update();
         Explosions::update();
 
