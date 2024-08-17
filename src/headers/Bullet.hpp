@@ -10,6 +10,5 @@ public:
     Bullet(Vec2f pos, Vec2f vector, float speed);
     void update(int bulletIndex);
     bool hasHitWall();
-    void draw();
     void explode();
 };

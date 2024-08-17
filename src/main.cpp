@@ -22,7 +22,7 @@ int main()
     Turret turret(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
     turret.showHitbox();
     Enemy enemy(Vec2f(200, 200));
-
+    
     /* Main Loop */
     while (Game::window.isOpen())
     {
