@@ -2,7 +2,6 @@
 #include <SFML/Audio.hpp>
 #include <math.h>
 #include <iostream>
-#include <stack>
 
 #include "Tower.hpp"
 #include "Turret.hpp"
