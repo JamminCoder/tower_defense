@@ -2,10 +2,10 @@
 #include "Entity.hpp"
 #include <iostream>
 
-Entity::Entity(int x, int y, int width, int height, const char* texturePath)
-    : pos(Vec2f(x, y)), 
-    size(Vec2f(width, height)),
-    vel(Vec2f(0, 0))
+Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, const char* texturePath)
+    : pos(pos), 
+    vel(vel),
+    size(size)
 {
     sprite.setPosition(pos);
     hitbox.setPosition(pos);
@@ -17,7 +17,6 @@ Entity::Entity(int x, int y, int width, int height, const char* texturePath)
     texture.loadFromFile(texturePath);
     sprite.setTexture(texture);
 }
-
 
 void Entity::draw() {
     if (isShowingHitbox) Game::window.draw(hitbox);

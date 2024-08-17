@@ -5,7 +5,7 @@
 
 
 Enemy::Enemy(Vec2f pos) :
-    Entity(pos.x, pos.y, 20, 20, "") {
+    Entity(pos, Vec2f(0, 0), Vec2f(20, 20), "") {
     this->showHitbox();
 }
 

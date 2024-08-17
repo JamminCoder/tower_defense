@@ -14,7 +14,7 @@ public:
     sf::Sprite sprite;
     sf::RectangleShape hitbox;
 
-    Entity(int x, int y, int width, int height, const char* texturePath);
+    Entity(Vec2f pos, Vec2f vel, Vec2f size, const char* texturePath);
     void draw();
     void showHitbox();
     void hideHitbox();
