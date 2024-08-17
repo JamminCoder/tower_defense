@@ -12,5 +12,4 @@ public:
     bool hasHitWall();
     void draw();
     void explode();
-    Vec2f getPos();
 };
