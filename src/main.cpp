@@ -35,15 +35,14 @@ int main()
                 Bullets::clear();
             }
         }
-        Game::resetTimeDelta();
 
         /* Updates and display */
+
+        Game::update();
+
         enemy.update();
         turret.update();
         Bullets::update();
         Explosions::update();
-
-        Game::window.display();
-        Game::window.clear();
     }
 }

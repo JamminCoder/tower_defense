@@ -8,7 +8,7 @@
 const char* Game::NAME = "Tower Defense";
 int Game::WINDOW_H = 800;
 int Game::WINDOW_W = 1200;
-int Game::FRAME_RATE = 30;
+int Game::FRAME_RATE = 60;
 float Game::timeDelta;
 
 
@@ -24,7 +24,12 @@ void Game::init() {
     TextureLoader::loadTextures();
 }
 
-
 void Game::resetTimeDelta() {
     Game::timeDelta = Game::clock.restart().asSeconds();
+}
+
+void Game::update() {
+    Game::window.display();
+    Game::window.clear();
+    Game::resetTimeDelta();
 }

@@ -16,4 +16,5 @@ public:
     static void resetTimeDelta();
     
     static void init();
+    static void update();
 };
