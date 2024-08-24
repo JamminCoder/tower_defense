@@ -2,20 +2,23 @@
 #include "Entity.hpp"
 #include <iostream>
 
-Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, const char* texturePath)
+Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name)
     : pos(pos), 
     vel(vel),
     size(size)
 {
-    sprite.setPosition(pos);
-    hitbox.setPosition(pos);
-    hitbox.setSize(size);
-    hitbox.setOutlineColor(sf::Color::Red);
-    hitbox.setOutlineThickness(1.0f);
+    this->sprite.setPosition(pos);
+    this->hitbox.setPosition(pos);
+    this->hitbox.setSize(size);
+    this->hitbox.setOutlineColor(sf::Color::Red);
+    this->hitbox.setOutlineThickness(1.0f);
 
-    if (texturePath[0] == '\0') return;
-    texture.loadFromFile(texturePath);
-    sprite.setTexture(texture);
+    if (!texturePath.empty()) {
+        this->texture.loadFromFile(texturePath);
+        this->sprite.setTexture(texture);
+    }
+    
+    name.empty() ?  this->name = "Entity" : this->name = name;
 }
 
 void Entity::draw() {

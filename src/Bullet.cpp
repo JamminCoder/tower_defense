@@ -8,7 +8,7 @@
 #include "Bullets.hpp"
 
 Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
-    Entity(pos, vector, Vec2f(5, 5), ""),
+    Entity(pos, vector, Vec2f(5, 5), "", "Bullet"),
     speed(speed)
 {
     this->vel = Vec2f(vector.x * speed, vector.y * speed);

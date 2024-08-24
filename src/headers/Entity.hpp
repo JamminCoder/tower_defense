@@ -10,11 +10,12 @@ public:
     Vec2f size;
     Vec2f vel;
     bool isShowingHitbox = false;
+    std::string name;
     sf::Texture texture;
     sf::Sprite sprite;
     sf::RectangleShape hitbox;
 
-    Entity(Vec2f pos, Vec2f vel, Vec2f size, const char* texturePath);
+    Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name);
     void draw();
     void move();
     virtual void update();

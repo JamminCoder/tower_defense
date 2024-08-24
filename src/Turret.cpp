@@ -8,7 +8,7 @@
 #include "Game.hpp"
 
 Turret::Turret(int x, int y, int length) :
-    Entity(Vec2f(x, y), Vec2f(0, 0), Vec2f(2, length), "resources/turret.png")
+    Entity(Vec2f(x, y), Vec2f(0, 0), Vec2f(2, length), "resources/turret.png", "Turret")
 {
     this->length = length;
     this->sprite.setOrigin(Vec2f(0, 0));
